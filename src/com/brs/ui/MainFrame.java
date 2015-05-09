@@ -42,7 +42,7 @@ public class MainFrame extends JFrame {
 	private static final long serialVersionUID = -1931380773333544736L;
 
 	public static MainFrame brs;
-	private static DBConnection conn;
+	static DBConnection conn;
 	
 	LoginPanel loginPanel;
 	RegistrationPanel regPanel;
@@ -58,7 +58,7 @@ public class MainFrame extends JFrame {
 			/*
 			 * Establishing connection with database.
 			 */
-			conn = new DBConnection();
+			MainFrame.conn = new DBConnection();
 			
 			/*
 			 * Setting look and feel
