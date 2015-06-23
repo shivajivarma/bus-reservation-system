@@ -18,8 +18,8 @@ package com.brs.utility;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -53,7 +53,8 @@ public class DBConnection {
 	public DBConnection() throws DBConnectException{
 		BufferedReader dbConfig = null;
 		try {
-			dbConfig = new BufferedReader(new FileReader("db.config"));
+			
+			dbConfig = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/db.config")));
 			
 			Class.forName(dbConfig.readLine());
 			if(conn==null){
@@ -68,6 +69,7 @@ public class DBConnection {
 		}catch (ClassNotFoundException cnfe) {
 			throw new DBConnectException("Oracle Driver Not Found");
 		} catch (SQLException sqle) {
+			sqle.printStackTrace();
 			throw new DBConnectException("Unable to establish connection. Contact support.");
 		} finally{
 			if(dbConfig != null)

@@ -20,6 +20,7 @@ import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -77,8 +78,8 @@ public class MainFrame extends JFrame {
 			JPanel banner = new JPanel();
 			JLabel bannerLabel = new JLabel("Bus Resevation System");
 			bannerLabel.setFont(StylesAndHelperMethods.FONT_BANNER);
-			banner.add(bannerLabel);
-			add(BorderLayout.NORTH, banner);//new ImageIcon("assets//banner.jpg")));
+			banner.add(new JLabel(new ImageIcon(getClass().getResource("/assets/banner.jpg"))));//bannerLabel);
+			add(BorderLayout.NORTH, banner);
 			
 			loginForm();
 			/*

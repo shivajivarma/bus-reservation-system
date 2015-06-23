@@ -22,8 +22,8 @@ public class SeatLayout extends JPanel{
 	private static final long serialVersionUID = -2795475292083804120L;
 	JLabel seats[]=new JLabel[41];
 	JCheckBox seat[]=new JCheckBox[41];
-	ImageIcon booked=new ImageIcon("assets/booked_seat.jpg");
-	ImageIcon avail=new ImageIcon("assets/available_seat.jpg");
+	ImageIcon booked=new ImageIcon(getClass().getResource("/assets/booked_seat.jpg"));
+	ImageIcon avail=new ImageIcon(getClass().getResource("/assets/available_seat.jpg"));
 	JButton btnBook,btnBack;
 	BusBean bb;
 	String date;

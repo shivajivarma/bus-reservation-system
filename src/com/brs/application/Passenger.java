@@ -3,16 +3,14 @@
  * 
  * <Customer specific copyright notice (if any) >
  * 
- * Customer.java
+ * Passenger.java
  * 
- * This file contains Customer class which holds 
- * all methods to perform all customer operations.
+ * This file contains Passenger class which holds all controller methods to perform all passenger operations link login, registration, reservation and cancellation.
  * 
  * Version 1.0
  * 
- * Created on 3 SEP 2012
+ * Created on 3 SEP 2010
  * 
- * <Modification History>
  */
 package com.brs.application;
 
@@ -171,7 +169,8 @@ public class Passenger {
 		FileWriter fw;   
 		try {
 			 Thread.sleep(1000);
-			fw = new FileWriter("bin\\tickets.html");
+			 System.out.println(System.getenv("APPDATA"));
+			fw = new FileWriter(System.getenv("APPDATA")+"\\ticket.html");
 			
 			Iterator<ReserveBean> irbs = rbs.iterator();
 			ReserveBean rb;
@@ -196,7 +195,7 @@ public class Passenger {
 				fw.write("</td></tr><tr height='*'></tr></table>");
 			}	
 			fw.close();	
-			Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler "+ClassLoader.getSystemResource("tickets.html"));
+			Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler file:///"+System.getenv("APPDATA")+"/ticket.html");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {

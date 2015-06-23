@@ -1,1 +1,10 @@
+# .gitignore for Yeoman-Jekyll projects
+
+# Ignore OS generated files #
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+ticket.html
 /bin
+/doc
