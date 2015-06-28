@@ -1,5 +1,5 @@
 /**
- * <Copyright information>
+ * ALL WORKS © SHIVAJI VARMA<contact@shivajivarma.com>
  * 
  * <Customer specific copyright notice (if any) >
  * 

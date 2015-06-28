@@ -1,17 +1,14 @@
 /**
- * <Copyright information>
+ * ALL WORKS © SHIVAJI VARMA<contact@shivajivarma.com>
  * 
- * ALL WORKS © SHIVAJI VARMA[contact@shivajivarma.com]
+ * PassengerBean.java
  * 
- * AccountDetails.java
- * 
- * This files contains AccountDetails bean class.
+ * This file contains PassengerBean bean class.
  * 
  * Version 1.0
  * 
  * Created on 3 SEP 2012
  * 
- * <Modification History>
  */
 package com.brs.entity;
 

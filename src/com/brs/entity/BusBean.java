@@ -1,11 +1,9 @@
 /**
- * <Copyright information>
+ * ALL WORKS © SHIVAJI VARMA<contact@shivajivarma.com>
  * 
- * ALL WORKS © SHIVAJI VARMA[contact@shivajivarma.com]
+ * BusBean.java
  * 
- * AccountDetails.java
- * 
- * This files contains AccountDetails bean class.
+ * This file contains BusBean bean class.
  * 
  * Version 1.0
  * 
@@ -17,7 +15,7 @@ package com.brs.entity;
 
 /**
  * 
- * This is Bean class, which holds all the route details.
+ * This is Bean class, which holds all the bus details.
  *
  */
 public class BusBean{

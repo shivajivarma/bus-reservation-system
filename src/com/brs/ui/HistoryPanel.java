@@ -89,13 +89,16 @@ public class HistoryPanel extends JPanel{
 		btnPrint.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
+				ArrayList<ReserveBean> tickets = new ArrayList<ReserveBean>();
+				
 				for(int i=0;i<rbs.size();i++){		
 					if(table.isRowSelected(i)){
-						ArrayList<ReserveBean> tickets = new ArrayList<ReserveBean>();
+						
 						tickets.add(rbs.get(i));
-						Passenger.printTickets(tickets);
+						
 					}
 				}
+				Passenger.printTickets(tickets);
 			}
 		});
 	}

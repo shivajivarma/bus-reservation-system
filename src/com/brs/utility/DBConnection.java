@@ -1,7 +1,5 @@
 /**
- * <Copyright information>
- * 
- * ALL WORKS © SHIVAJI VARMA[contact@shivajivarma.com]
+ * ALL WORKS © SHIVAJI VARMA<contact@shivajivarma.com>
  * 
  * DBConnection.java
  * 
@@ -31,7 +29,7 @@ import com.brs.utility.exceptions.DBConnectException;
  * connection until the DBconnect object is been disposed.
  * 
  * @version 1.0
- * @author Shivaji Varma[contact@shivajivarma.com]
+ * @author Shivaji Varma<contact@shivajivarma.com>
  */
 public class DBConnection {
 

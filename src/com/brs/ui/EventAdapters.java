@@ -1,7 +1,5 @@
 /**
- * <Copyright information>
- * 
- * <Customer specific copyright notice (if any) >
+ * ALL WORKS © SHIVAJI VARMA<contact@shivajivarma.com>
  * 
  * ActionAdapter.java
  * 
@@ -17,6 +15,8 @@ package com.brs.ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 /**
  * 
@@ -24,8 +24,21 @@ import java.awt.event.ActionListener;
  *  contains empty actionPerformed Event.
  *
  */
-public class ActionAdapter implements ActionListener{
+class ActionAdapter implements ActionListener{
 
 	public void actionPerformed(ActionEvent arg0) {}
+
+}
+
+/**
+ * 
+ * This is Adapter class for ItemListener interface,
+ *  contains empty  Event.
+ *
+ */
+class ItemAdapter implements ItemListener{
+	
+	public void itemStateChanged(ItemEvent arg0) {
+	}
 
 }

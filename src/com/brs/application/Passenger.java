@@ -1,7 +1,5 @@
 /**
- * <Copyright information>
- * 
- * <Customer specific copyright notice (if any) >
+ * ALL WORKS © SHIVAJI VARMA<contact@shivajivarma.com>
  * 
  * Passenger.java
  * 
@@ -14,8 +12,10 @@
  */
 package com.brs.application;
 
+import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -41,6 +41,7 @@ public class Passenger {
 	 */
 	private PassengerBean sessionPassenger;
 	public static Passenger session;
+	
 	/**
 	 * This function verifies user login credentials.
 	 * 
@@ -165,35 +166,42 @@ public class Passenger {
 	/**
 	 * Prints tickets from history page.
 	 */
+	 public BufferedReader loadTicketHTML(){
+		return new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/assets/ticket.html")));
+	 }
+	 
 	 public static void printTickets(ArrayList<ReserveBean> rbs){
-		FileWriter fw;   
+		FileWriter fw;
+		BufferedReader ticketHTML = session.loadTicketHTML();;
 		try {
 			 Thread.sleep(1000);
-			 System.out.println(System.getenv("APPDATA"));
-			fw = new FileWriter(System.getenv("APPDATA")+"\\ticket.html");
+			  
+			 fw = new FileWriter(System.getenv("APPDATA")+"\\ticket.html");
 			
+			 String str;
+			 while((str=ticketHTML.readLine())!=null){
+				 fw.write(str);
+			 }
+			 
 			Iterator<ReserveBean> irbs = rbs.iterator();
 			ReserveBean rb;
 			while(irbs.hasNext()){
 				rb = irbs.next();
-				fw.write("<table border=0 height='357px' width='615px' style='background-image:url(ticket.jpg);'><tr height='160px'><td></td></tr><tr height='35px' valign='top'><td align='right'  width='110px'>Ticket id:</td><td width='180px'>");
-				fw.write(Long.toString(rb.getTid()));
-				fw.write("</td><td width='90'>Bus id:</td><td>");
-				fw.write(Long.toString(rb.getBid()));
-				fw.write("</td></tr><tr height='35px'><td align='right' width='110px'>Origin:</td><td width='180px'>");
-				fw.write(rb.getBusBean().getRouteBean().getOrigin());
-				fw.write("</td><td width='90'>Departure time:</td><td >");
-				fw.write(rb.getBusBean().getDeptime());
-				fw.write("</td></tr><tr height='35px'><td align='right' width='110px'>Destination:</td><td width='180px'>");
-				fw.write(rb.getBusBean().getRouteBean().getDestination());
-				fw.write("</td><td width='90'>Arrival time:</td><td >");
-				fw.write(rb.getBusBean().getArrtime());
-				fw.write("</td></tr><tr height='35px'><td align='right' width='110px'>Date of travel:</td><td width='180px'>");
-				fw.write(rb.getDate());
-				fw.write("</td><td width='90'>Seat number:</td><td >");
-				fw.write(Integer.toString(rb.getSeat()));
-				fw.write("</td></tr><tr height='*'></tr></table>");
-			}	
+				fw.write("<script>");
+				String render = "render({'tid':'"+rb.getTid()+"',"+
+						"'bid':'"+rb.getBid()+"',"+
+						"'origin':'"+rb.getBusBean().getRouteBean().getOrigin()+"',"+
+						"'deptime':'"+rb.getBusBean().getDeptime()+"',"+
+						"'arrtime':'"+rb.getBusBean().getArrtime()+"',"+
+						"'destination':'"+rb.getBusBean().getRouteBean().getDestination()+"',"+
+						"'seat':'"+rb.getSeat()+"',"+
+						"'date':'"+rb.getDate()+"',"+
+								 "})";	
+				fw.write(render);
+				fw.write("</script>");
+			}
+			fw.write("</body></html>");
+			ticketHTML.close();
 			fw.close();	
 			Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler file:///"+System.getenv("APPDATA")+"/ticket.html");
 		} catch (IOException e) {

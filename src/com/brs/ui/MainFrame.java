@@ -1,7 +1,5 @@
 /**
- * <Copyright information>
- * 
- * <Customer specific copyright notice (if any) >
+ * ALL WORKS © SHIVAJI VARMA<contact@shivajivarma.com>
  * 
  * MainFrame.java
  * 

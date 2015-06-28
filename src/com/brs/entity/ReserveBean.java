@@ -1,23 +1,20 @@
 /**
- * <Copyright information>
+ * ALL WORKS © SHIVAJI VARMA<contact@shivajivarma.com>
  * 
- * ALL WORKS © SHIVAJI VARMA[contact@shivajivarma.com]
+ * ReserveBean.java
  * 
- * AccountDetails.java
- * 
- * This files contains AccountDetails bean class.
+ * This files contains ReserveBean bean class.
  * 
  * Version 1.0
  * 
  * Created on 3 SEP 2012
  * 
- * <Modification History>
  */
 package com.brs.entity;
 
 /**
  * 
- * This is Bean class, which holds all the route details.
+ * This is Bean class, which holds all the reservation details.
  *
  */
 public class ReserveBean{

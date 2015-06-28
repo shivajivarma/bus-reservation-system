@@ -1,7 +1,5 @@
 /**
- * <Copyright information>
- * 
- * ALL WORKS © SHIVAJI VARMA[contact@shivajivarma.com]
+ * ALL WORKS © SHIVAJI VARMA<contact@shivajivarma.com>
  * 
  * CheckRequestDuplicateException.java
  * 
