@@ -5,9 +5,8 @@
 ehthumbs.db
 Icon?
 Thumbs.db
-ticket.html
+
 bin/
 docs/
 apidocs/
 *.class
-apidocs/*.*
