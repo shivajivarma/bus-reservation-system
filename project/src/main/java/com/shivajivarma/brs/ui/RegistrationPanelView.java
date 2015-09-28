@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import com.shivajivarma.brs.utility.ValidationEngine;
+import com.shivajivarma.brs.utility.ValidationUtil;
 import com.shivajivarma.brs.utility.ViewComponentFactory;
 import com.shivajivarma.brs.utility.constants.Labels;
 import com.shivajivarma.brs.utility.constants.Messages;
@@ -33,13 +33,13 @@ public class RegistrationPanelView extends BaseView implements View{
 	}
 	
 	private void initializeLabels(){
-		this.add(ViewComponentFactory.createJPanelHeader(Labels.REGISTER, new int[]{x+115,y+0,300,28}));
-		this.add(ViewComponentFactory.createJPanelNormal(Labels.USERNAME, new int[]{x+95,y+60,150,20}));
-		this.add(ViewComponentFactory.createJPanelNormal(Labels.FULL_NAME, new int[]{x+100,y+120,150,20}));
-		this.add(ViewComponentFactory.createJPanelNormal(Labels.PASSWORD, new int[]{x+99,y+180,200,20}));
-		this.add(ViewComponentFactory.createJPanelNormal(Labels.RE_ENTER_PASSWORD, new int[]{x+10,y+240,200,20}));
-		this.add(ViewComponentFactory.createJPanelNormal(Labels.MOBILE, new int[]{x+122,y+300,200,20}));
-		this.add(ViewComponentFactory.createJPanelNormal(Labels.EMAIL, new int[]{x+128,y+360,200,20}));
+		this.add(ViewComponentFactory.createJLabelHeader(Labels.REGISTER, new int[]{x+115,y+0,300,28}));
+		this.add(ViewComponentFactory.createJLabelNormal(Labels.USERNAME, new int[]{x+95,y+60,150,20}));
+		this.add(ViewComponentFactory.createJLabelNormal(Labels.FULL_NAME, new int[]{x+100,y+120,150,20}));
+		this.add(ViewComponentFactory.createJLabelNormal(Labels.PASSWORD, new int[]{x+99,y+180,200,20}));
+		this.add(ViewComponentFactory.createJLabelNormal(Labels.RE_ENTER_PASSWORD, new int[]{x+10,y+240,200,20}));
+		this.add(ViewComponentFactory.createJLabelNormal(Labels.MOBILE, new int[]{x+122,y+300,200,20}));
+		this.add(ViewComponentFactory.createJLabelNormal(Labels.EMAIL, new int[]{x+128,y+360,200,20}));
 	}
 	
 	private void initializeComponents(){
@@ -93,22 +93,22 @@ public class RegistrationPanelView extends BaseView implements View{
 		ArrayList<String> errors = new ArrayList<String>();
 		String message;
 		
-		message = ValidationEngine.validateField(username, new String[]{"required","username"});
+		message = ValidationUtil.validateField(username, new String[]{"required","username"});
 		errors.add(message);
 		
-		message = ValidationEngine.validateField(fullname, new String[]{"required","alphabetsOnly"});
+		message = ValidationUtil.validateField(fullname, new String[]{"required","alphabetsOnly"});
 		errors.add(message);
 		
-		message = ValidationEngine.validateField(password, new String[]{"required", "noSpaces"});
+		message = ValidationUtil.validateField(password, new String[]{"required", "noSpaces"});
 		errors.add(message);
 		
-		message = ValidationEngine.validateField(reEnterPassword, new String[]{"required", "noSpaces"});
+		message = ValidationUtil.validateField(reEnterPassword, new String[]{"required", "noSpaces"});
 		errors.add(message);
 		
-		message = ValidationEngine.validateField(mobile, new String[]{"mobile"});
+		message = ValidationUtil.validateField(mobile, new String[]{"mobile"});
 		errors.add(message);
 		
-		message = ValidationEngine.validateField(email, new String[]{"email"});
+		message = ValidationUtil.validateField(email, new String[]{"email"});
 		errors.add(message);
 		
 		errors.removeAll(Collections.singleton(null));

@@ -21,26 +21,26 @@ public class ViewComponentFactory {
 	/*
 	 * Labels
 	 */
-	public static JLabel createJPanelLarge(String name){
+	public static JLabel createJLabelLarge(String name){
 		JLabel label = new JLabel(name);
 		label.setFont(FONT_LARGE);
 		return label;
 	}
 	
-	public static JLabel createJPanelLarge(String name, int[] coordinates){
-		JLabel label = createJPanelLarge(name);
+	public static JLabel createJLabelLarge(String name, int[] coordinates){
+		JLabel label = createJLabelLarge(name);
 		label.setBounds(coordinates[0],coordinates[1],coordinates[2],coordinates[3]);
 		return label;
 	}
 	
-	public static JLabel createJPanelHeader(String name){
+	public static JLabel createJLabelHeader(String name){
 		JLabel label = new JLabel(name);
 		label.setFont(FONT_HEADER);
 		return label;
 	}
 	
-	public static JLabel createJPanelHeader(String name, int[] coordinates){
-		JLabel label = createJPanelHeader(name);
+	public static JLabel createJLabelHeader(String name, int[] coordinates){
+		JLabel label = createJLabelHeader(name);
 		label.setBounds(coordinates[0],coordinates[1],coordinates[2],coordinates[3]);
 		return label;
 	}
@@ -51,29 +51,26 @@ public class ViewComponentFactory {
 		return label;
 	}
 	
-	public static JLabel createJPanelNormal(String name, int[] coordinates){
+	public static JLabel createJLabelNormal(String name, int[] coordinates){
 		JLabel label = createJPanelNormal(name);
 		label.setBounds(coordinates[0],coordinates[1],coordinates[2],coordinates[3]);
 		return label;
 	}
 	
-	public static JLabel createJPanelSmall(String name){
+	public static JLabel createJLabelSmall(String name){
 		JLabel label = new JLabel(name);
 		label.setFont(FONT_SMALL);
 		return label;
 	}
 	
-	public static JLabel createJPanelSmall(String name, int[] coordinates){
-		JLabel label = createJPanelSmall(name);
+	public static JLabel createJLabelSmall(String name, int[] coordinates){
+		JLabel label = createJLabelSmall(name);
 		label.setBounds(coordinates[0],coordinates[1],coordinates[2],coordinates[3]);
 		return label;
 	}
 	
-	public static JLabel createJPanelImage(String path){
-		if(path != null){
-			return new JLabel(new ImageIcon(ViewComponentFactory.class.getResource(path)));
-		}
-		return null;
+	public static JLabel createJLabelImage(String path){
+		return new JLabel(new ImageIcon(ViewComponentFactory.class.getResource(path)));
 	}
 	
 	/*

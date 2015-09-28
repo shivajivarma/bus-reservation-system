@@ -48,7 +48,6 @@ public class MasterView{
 	    	}
 	    	frame.revalidate();
 	    	frame.repaint();
-	    	//panels.add(panel);
 	    	return true;
 	    }
 	    
@@ -56,12 +55,6 @@ public class MasterView{
 	    	frame.getContentPane().removeAll();
 	    	frame.revalidate();
 	    	frame.repaint();
-	    }
-	    
-	    public boolean remove(JPanel panel){
-	    	frame.remove(panel);
-	    	return true;
-	    }
-	    
+	    }	    
 
 }

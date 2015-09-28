@@ -2,7 +2,6 @@ package com.shivajivarma.brs.controller;
 
 import java.awt.event.ActionEvent;
 
-import com.shivajivarma.brs.model.Model;
 import com.shivajivarma.brs.model.Passenger;
 import com.shivajivarma.brs.ui.Alert;
 import com.shivajivarma.brs.ui.LoginPanelView;
@@ -34,14 +33,15 @@ public class LoginController implements Controller{
 			public void actionPerformed(ActionEvent ae) {
 				if(loginView.validateFields()){
 					passenger.setUsername(loginView.getUsername());
-					if(_this.checkUsername()){
+					if(_this.usernameCheck()){
 						if(_this.passwordCheck()){
-							Alert.errorMessage(Messages.SUCCESS_REGISTRATION);
-							masterController.loginControl();
+							masterController.applicationControl(passengerController);
 						}else{
+							loginView.refresh();
 							Alert.errorMessage(Messages.ERROR_WRONG_PASSWORD);
 						}
 					}else{
+						loginView.refresh();
 						Alert.errorMessage(Messages.ERROR_NO_USERNAME);
 					}
 				}
@@ -56,7 +56,7 @@ public class LoginController implements Controller{
     	
     }
     
-    private boolean checkUsername(){
+    private boolean usernameCheck(){
     	if(passengerController == null){
     		passengerController = new PassengerController(passenger);
     	}else{

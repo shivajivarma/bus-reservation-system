@@ -23,7 +23,7 @@ import com.shivajivarma.brs.utility.exceptions.DBConnectException;
 /**
  * @author: Shivaji Varma (contact@shivajivarma.com)
  */
-public class PassengerController extends BaseController{
+public class PassengerController extends BaseController implements Controller{
 	
 	/**
 	 * Session variable which holds account details of the customer until he logout.
@@ -200,5 +200,10 @@ public class PassengerController extends BaseController{
 		session.close();
 		session = null;
 	 }
+	@Override
+	public void control(MasterController masterController) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

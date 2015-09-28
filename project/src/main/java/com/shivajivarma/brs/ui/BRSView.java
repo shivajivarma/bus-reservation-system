@@ -2,17 +2,7 @@
 package com.shivajivarma.brs.ui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-
 import java.util.Collection;
 
 import com.shivajivarma.brs.dao.DBConnection;
@@ -30,26 +20,8 @@ public class BRSView extends JFrame {
 	//public static MainFrame brs;
 	static DBConnection conn;
 	
-	LoginPanelView loginPanel;
-	RegistrationPanelView regPanel;
-	HomeTabsView homePanel;
-	JPanel bannerPanel;
-	JLabel banner;
+	HomeTabsPanelView homePanel;
 	
-	/**
-	 * The following constructor adds login panel to frame.
-	 */
-	public BRSView() {
-	}
-	
-	
-	
-	
-	public void homePage(){
-		homePanel = new HomeTabsView(this);
-		add(BorderLayout.CENTER,homePanel);
-		homePanel.setVisible(true);
-	}
 	
 	public void availableBusesPage(Collection<BusBean> bbs, String date){
 		homePanel.setVisible(false);

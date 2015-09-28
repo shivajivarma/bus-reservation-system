@@ -1,5 +1,7 @@
 package com.shivajivarma.brs.ui;
 
+import java.awt.BorderLayout;
+
 import com.shivajivarma.brs.utility.ViewComponentFactory;
 import com.shivajivarma.brs.utility.constants.ResourcePaths;
 
@@ -9,6 +11,7 @@ import com.shivajivarma.brs.utility.constants.ResourcePaths;
 @SuppressWarnings("serial")
 public class BannerViewPanel extends BaseView implements View{
 	public BannerViewPanel(){
-		this.add(ViewComponentFactory.createJPanelImage(ResourcePaths.BANNER));
+		this.setLayout(new BorderLayout());
+		this.add(ViewComponentFactory.createJLabelImage(ResourcePaths.BANNER));
 	}
 }

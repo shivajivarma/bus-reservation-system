@@ -16,5 +16,8 @@ public class Labels {
 	public static final String MOBILE = "Mobile";
 	public static final String SUBMIT = "Submit";
 	public static final String CANCEL = "Cancel";
+	public static final String ENTER_TICKET_ID = "Enter you Ticket no.";
+	public static final String TICKET_NO = "Ticket no.";
+	public static final String LOGOUT = "Logout";
 	
 }

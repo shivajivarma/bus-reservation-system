@@ -22,7 +22,7 @@ import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import com.shivajivarma.brs.utility.ValidationEngine;
+import com.shivajivarma.brs.utility.ValidationUtil;
 import com.shivajivarma.brs.utility.ViewComponentFactory;
 import com.shivajivarma.brs.utility.constants.Labels;
 
@@ -49,56 +49,14 @@ public class LoginPanelView extends BaseView implements View{
 	 */
 	public LoginPanelView() {
 		_this = this;
-		
 		this.initializeLabels();
-		this.initializeComponents();
-		
-		
-		/**
-		 *  On clicking login button login validation is been initiated.
-		 */
-		/*btnLogin.addActionListener(new ActionAdapter() {
-			
-			public void actionPerformed(ActionEvent ae) {
-				
-				
-					
-					/*
-					 * Validating username and password against database.
-					 */
-					/*else
-						try {
-							int status = passengerController.login(username,password);
-							if(status == 0){
-								StylesAndHelperMethods.errorMessage("Login Failed !! Invalid username");
-								self.reset();
-							}else if(status == 1){
-								StylesAndHelperMethods.errorMessage("Login Failed !! Wrong password");
-								self.pfPassword.setText(null);
-							}
-							
-							// Login success. Open main panel
-							else{
-								mainFrame.homePage();
-								self.setVisible(false);
-							}
-						}  catch (EmptyResultSetException e) {
-							StylesAndHelperMethods.errorMessage("Login Failed !! Invalid username");
-							self.reset();
-						} catch (DBConnectException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-			}
-		});*/
-		
-			
+		this.initializeComponents();	
 	}
 	
 	private void initializeLabels(){
-		this.add(ViewComponentFactory.createJPanelHeader(Labels.LOGIN, new int[]{x,y,120,28}));
-		this.add(ViewComponentFactory.createJPanelNormal(Labels.USERNAME, new int[]{x+20,y+80,150,20}));
-		this.add(ViewComponentFactory.createJPanelNormal(Labels.PASSWORD, new int[]{x+20,y+140,150,20}));
+		this.add(ViewComponentFactory.createJLabelHeader(Labels.LOGIN, new int[]{x,y,120,28}));
+		this.add(ViewComponentFactory.createJLabelNormal(Labels.USERNAME, new int[]{x+20,y+80,150,20}));
+		this.add(ViewComponentFactory.createJLabelNormal(Labels.PASSWORD, new int[]{x+20,y+140,150,20}));
 	}
 	
 	private void initializeComponents(){
@@ -123,10 +81,10 @@ public class LoginPanelView extends BaseView implements View{
 		ArrayList<String> errors = new ArrayList<String>();
 		String message;
 		
-		message = ValidationEngine.validateField(username, new String[]{"required","username"});
+		message = ValidationUtil.validateField(username, new String[]{"required","username"});
 		errors.add(message);
 		
-		message = ValidationEngine.validateField(password, new String[]{"required", "noSpaces"});
+		message = ValidationUtil.validateField(password, new String[]{"required", "noSpaces"});
 		errors.add(message);
 		
 		errors.removeAll(Collections.singleton(null));

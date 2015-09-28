@@ -47,26 +47,4 @@ public class StylesAndHelperMethods {
 		JOptionPane.showMessageDialog(null, mesg, "Success", JOptionPane.PLAIN_MESSAGE);
 	}
 	
-	public static final int maxDaysOfAMonth(int year,int month){
-		Calendar calendar=Calendar.getInstance();
-		calendar.set(year, month-1, 1);
-		return calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-	}
-	
-	public static final int currentYear(){
-		return Integer.parseInt(new SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime()));
-	}
-	
-	public static final int currentMonth(){
-		return Integer.parseInt(new SimpleDateFormat("MM").format(Calendar.getInstance().getTime()));
-	}
-	
-	public static final int currentDay(){
-		return Integer.parseInt(new SimpleDateFormat("dd").format(Calendar.getInstance().getTime()));
-	}
-	
-	public static final String currentDate(){
-		return new SimpleDateFormat("dd/MMM/yyyy").format(Calendar.getInstance().getTime());
-	}
-	
 }
