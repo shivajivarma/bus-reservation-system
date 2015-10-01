@@ -2,7 +2,10 @@ package com.shivajivarma.brs.controller;
 
 import java.awt.event.ActionEvent;
 
+import org.springframework.dao.EmptyResultDataAccessException;
+
 import com.shivajivarma.brs.model.Passenger;
+import com.shivajivarma.brs.model.services.PassengerService;
 import com.shivajivarma.brs.ui.Alert;
 import com.shivajivarma.brs.ui.LoginPanelView;
 import com.shivajivarma.brs.ui.View;
@@ -15,7 +18,7 @@ import com.shivajivarma.brs.utility.constants.Messages;
 public class LoginController implements Controller{
 	
 	private LoginController _this;
-	private PassengerController passengerController;
+	private PassengerService passengerService;
 	private LoginPanelView loginView;
 	private Passenger passenger;
 	
@@ -33,14 +36,16 @@ public class LoginController implements Controller{
 			public void actionPerformed(ActionEvent ae) {
 				if(loginView.validateFields()){
 					passenger.setUsername(loginView.getUsername());
-					if(_this.usernameCheck()){
-						if(_this.passwordCheck()){
-							masterController.applicationControl(passengerController);
+					passenger.setPassword(loginView.getPassword());
+					try{
+						if(_this.login()){
+							masterController.setPassengerService(passengerService);
+							masterController.applicationControl();
 						}else{
 							loginView.refresh();
 							Alert.errorMessage(Messages.ERROR_WRONG_PASSWORD);
 						}
-					}else{
+					}catch(EmptyResultDataAccessException e){
 						loginView.refresh();
 						Alert.errorMessage(Messages.ERROR_NO_USERNAME);
 					}
@@ -56,19 +61,14 @@ public class LoginController implements Controller{
     	
     }
     
-    private boolean usernameCheck(){
-    	if(passengerController == null){
-    		passengerController = new PassengerController(passenger);
-    	}else{
-    		passengerController.updateModel(passenger);
+    private boolean login()throws EmptyResultDataAccessException{
+    	if(passengerService == null){
+    		passengerService = new PassengerService();
     	}
-    	return !passengerController.isUsernameAvailable();
+    	passengerService.updateModel(passenger);
+    	return passengerService.login();
     }
     
-    private boolean passwordCheck(){
-    	passenger.setPassword(loginView.getPassword());
-    	passengerController.updateModel(passenger);
-    	return passengerController.login();
-    }
+    
     
 }

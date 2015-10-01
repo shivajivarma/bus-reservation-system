@@ -3,7 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans spring-schemas/spring-beans.xsd">
     
-    <bean id="passengerDAO" class="com.shivajivarma.brs.dao.PassengerDAOImpl">
+    <bean id="passengerDAO" class="com.shivajivarma.brs.model.dao.PassengerDAOImpl">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <bean id="reserveDAO" class="com.shivajivarma.brs.model.dao.ReserveDAOImpl">
         <property name="dataSource" ref="dataSource" />
     </bean>
      

@@ -1,13 +1,15 @@
-/**
- * Author: SHIVAJI VARMA <contact@shivajivarma.com>
- */
-package com.shivajivarma.brs.dao;
+package com.shivajivarma.brs.model.dao;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.dao.EmptyResultDataAccessException;
 
 import com.shivajivarma.brs.model.Passenger;
- 
+
+/**
+ * The Service class, which contains business logic to update Passenger model.
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
+ * @see Passenger
+ */
 public class PassengerDAOImpl extends BaseDAO implements PassengerDAO {
 	
 	private static final String table = Passenger.indentity;

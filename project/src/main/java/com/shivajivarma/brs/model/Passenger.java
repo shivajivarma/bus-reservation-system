@@ -2,10 +2,9 @@
 package com.shivajivarma.brs.model;
 
 /**
- * <h1>Passenger</h1>
- * <p>This is a Model class, which holds all the passenger properties.</p>
- * 
- * @author Shivaji Varma (contact@shivajivarma.com)
+ * The Bean class, which holds passenger properties.
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
+ * @see PassengerService
  */
 public class Passenger implements Model{
 	

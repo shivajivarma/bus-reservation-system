@@ -13,7 +13,7 @@
  * <Modification History>
  */
 
-package com.shivajivarma.brs.dao;
+package com.shivajivarma.brs.model.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

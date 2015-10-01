@@ -11,9 +11,9 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.shivajivarma.brs.controller.PassengerController;
 import com.shivajivarma.brs.model.BusBean;
-import com.shivajivarma.brs.model.ReserveBean;
+import com.shivajivarma.brs.model.Reserve;
+import com.shivajivarma.brs.model.services.PassengerService;
 import com.shivajivarma.brs.utility.ActionAdapter;
 
 public class SeatLayout extends JPanel{
@@ -85,18 +85,18 @@ public class SeatLayout extends JPanel{
 			public void actionPerformed(ActionEvent ae) {
 				
 			boolean flag=true;
-			ReserveBean rb;
-			ArrayList<ReserveBean> rbs = new ArrayList<ReserveBean>();
+			Reserve rb;
+			ArrayList<Reserve> rbs = new ArrayList<Reserve>();
 			
 			for (int i = 1; i <=40 ; i++) { 
 				if(seat[i].isSelected()){
-					rb = new ReserveBean();
-					rb.setPid(PassengerController.session.getSessionPassenger().getId());
+					rb = new Reserve();
+					rb.setPid(PassengerService.dbApplicationContext.getSessionPassenger().getId());
 					rb.setBusBean(self.bb);
 					
 					rb.setDate(self.date);
 					rb.setSeat(i);
-					flag = PassengerController.session.reserve(rb);
+					flag = PassengerService.dbApplicationContext.reserve(rb);
 					
 					rbs.add(rb);
 					if(!flag) 
@@ -105,7 +105,7 @@ public class SeatLayout extends JPanel{
 			}
 			if(flag){
 				StylesAndHelperMethods.successMessage("Tickets booked successfully");
-				PassengerController.printTickets(rbs);
+				PassengerService.printTickets(rbs);
 				mainFrame.homePage();
 				self.setVisible(false);
 			}

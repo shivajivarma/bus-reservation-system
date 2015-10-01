@@ -12,7 +12,7 @@
  * <Modification History>
  */
 
-package com.shivajivarma.brs.dao;
+package com.shivajivarma.brs.model.dao;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

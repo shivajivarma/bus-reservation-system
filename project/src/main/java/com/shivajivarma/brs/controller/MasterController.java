@@ -1,7 +1,9 @@
 package com.shivajivarma.brs.controller;
 
+import com.shivajivarma.brs.model.Model;
+import com.shivajivarma.brs.model.services.Service;
 import com.shivajivarma.brs.ui.BannerViewPanel;
-import com.shivajivarma.brs.ui.CancelTabView;
+import com.shivajivarma.brs.ui.CancellationTabView;
 import com.shivajivarma.brs.ui.HomeTabsPanelView;
 import com.shivajivarma.brs.ui.LoginPanelView;
 import com.shivajivarma.brs.ui.MasterView;
@@ -15,19 +17,17 @@ public class MasterController{
 	
 	private MasterView masterView;
 	private View bannerView;
-    private Controller loginController, registrationController, passengerController, homeTabsController;
-
-    public MasterController() {
-    }
+	private Service passengerService;
+	private Model passenger;
     
-    public MasterController(MasterView masterView) {
+	public MasterController(MasterView masterView) {
     	this.masterView = masterView;
-    	this.bannerView = new BannerViewPanel();
     }
     
       
     public void control(){
-    	this.applicationControl(new PassengerController());
+    	this.bannerView = new BannerViewPanel();
+    	this.loginControl();
     }
     
     public void loginControl(){
@@ -37,7 +37,7 @@ public class MasterController{
     	masterView.insertPanel(bannerView, "north");
     	masterView.insertPanel(loginForm, "center");
     	
-    	loginController = new LoginController(loginForm);
+    	Controller loginController = new LoginController(loginForm);
     	loginController.control(this);
     }
     
@@ -48,14 +48,13 @@ public class MasterController{
     	masterView.insertPanel(bannerView, "north");
     	masterView.insertPanel(registrationPanelView, "center");
     	
-    	registrationController = new RegistrationController(registrationPanelView);
+    	Controller registrationController = new RegistrationController(registrationPanelView);
     	registrationController.control(this);
     }
     
-    public void applicationControl(Controller passengerController){
-    	this.passengerController = passengerController;
+    public void applicationControl(){
     	HomeTabsPanelView homeTabs = new HomeTabsPanelView();
-    	CancelTabView cancelTab = new CancelTabView();
+    	CancellationTabView cancelTab = new CancellationTabView();
     	
     	homeTabs.insertTab(cancelTab, "Cancel ticket");
     	
@@ -63,12 +62,21 @@ public class MasterController{
     	masterView.insertPanel(bannerView, "north");
     	masterView.insertPanel(homeTabs, "center");
     	
-    	homeTabsController = new HomeTabsController(homeTabs);
+    	Controller homeTabsController = new HomeTabsController(homeTabs);
     	homeTabsController.control(this);
+    	
+    	Controller cancellationController = new CancellationController(cancelTab);
+    	cancellationController.control(this);
     }
+    
+    public Service getPassengerService() {
+		return passengerService;
+	}
 
-    public void _load(){        
-           
-    }
+	public void setPassengerService(Service passengerService) {
+		this.passengerService = passengerService;
+	}
+
+
     
 }

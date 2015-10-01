@@ -9,8 +9,8 @@ import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.TableColumn;
 
-import com.shivajivarma.brs.controller.PassengerController;
-import com.shivajivarma.brs.model.ReserveBean;
+import com.shivajivarma.brs.model.Reserve;
+import com.shivajivarma.brs.model.services.PassengerService;
 
 public class HistoryPanel extends JPanel{
 	
@@ -18,7 +18,7 @@ public class HistoryPanel extends JPanel{
 	
 	private JTable table;
 	private JButton btnPrint;
-	private ArrayList<ReserveBean> rbs;
+	private ArrayList<Reserve> rbs;
 	
 	public HistoryPanel(){
 		setLayout(null);
@@ -27,8 +27,8 @@ public class HistoryPanel extends JPanel{
 		btnPrint=new JButton("Print");
 		btnPrint.setBounds(910,400,80,40);
 		
-		rbs = (ArrayList<ReserveBean>) PassengerController.session.bookingHistory();
-		Iterator<ReserveBean> irbs = rbs.iterator();
+		rbs = (ArrayList<Reserve>) PassengerService.dbApplicationContext.bookingHistory();
+		Iterator<Reserve> irbs = rbs.iterator();
 		Vector<String> columns=new Vector<String>();
 		Vector<Vector<String>> data=new Vector<Vector<String>>();
 		
@@ -51,7 +51,7 @@ public class HistoryPanel extends JPanel{
 		while(irbs.hasNext()){
 			Vector<String> row=new Vector<String>();
 			
-			ReserveBean rb = irbs.next();
+			Reserve rb = irbs.next();
 			row.addElement(Long.toString(rb.getTid()));
 			row.addElement(Long.toString(rb.getBid()));
 			row.addElement(rb.getDate().substring(0,10));
@@ -89,7 +89,7 @@ public class HistoryPanel extends JPanel{
 		btnPrint.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
-				ArrayList<ReserveBean> tickets = new ArrayList<ReserveBean>();
+				ArrayList<Reserve> tickets = new ArrayList<Reserve>();
 				
 				for(int i=0;i<rbs.size();i++){		
 					if(table.isRowSelected(i)){
@@ -98,7 +98,7 @@ public class HistoryPanel extends JPanel{
 						
 					}
 				}
-				PassengerController.printTickets(tickets);
+				PassengerService.printTickets(tickets);
 			}
 		});
 	}

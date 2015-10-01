@@ -12,9 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-import com.shivajivarma.brs.controller.PassengerController;
 import com.shivajivarma.brs.model.BusBean;
-import com.shivajivarma.brs.utility.ActionAdapter;
+import com.shivajivarma.brs.model.services.PassengerService;
+import com.shivajivarma.brs.utility.EventAdapters.ActionAdapter;
 
 public class AvailableBusesPanel extends JPanel {
 	
@@ -97,7 +97,7 @@ public class AvailableBusesPanel extends JPanel {
 					for (k= 0; irbs.hasNext(); k++) {
 						BusBean bb = irbs.next();
 						if(jrbSelectBus[k].isSelected()){
-							mainFrame.seatLayoutPage(PassengerController.session.seatsAvailablity(bb.getBid(),self.date), bb, self.date);
+							//mainFrame.seatLayoutPage(PassengerController.session.seatsAvailablity(bb.getBid(),self.date), bb, self.date);
 							self.setVisible(false);
 							break;
 						}
@@ -113,7 +113,7 @@ public class AvailableBusesPanel extends JPanel {
 			btnBack.addActionListener(new ActionAdapter() {
 				
 				public void actionPerformed(ActionEvent ae) {
-					mainFrame.homePage();
+					//mainFrame.homePage();
 					self.setVisible(false);
 				}
 				

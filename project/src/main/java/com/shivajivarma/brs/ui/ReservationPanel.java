@@ -6,11 +6,9 @@ import java.util.Iterator;
 
 import javax.swing.*;
 
-import com.shivajivarma.brs.controller.PassengerController;
-import com.shivajivarma.brs.dao.RouteDAO;
 import com.shivajivarma.brs.model.RouteBean;
-import com.shivajivarma.brs.utility.ActionAdapter;
-import com.shivajivarma.brs.utility.ItemAdapter;
+import com.shivajivarma.brs.model.dao.RouteDAO;
+import com.shivajivarma.brs.model.services.PassengerService;
 import com.shivajivarma.brs.utility.exceptions.DBConnectException;
 
 public class ReservationPanel extends JPanel{
@@ -170,7 +168,7 @@ public class ReservationPanel extends JPanel{
 						){	
 					
 					String date = cbDate.getSelectedItem()+"-"+cbMonth.getSelectedItem()+"-"+cbYear.getSelectedItem();
-					mainFrame.availableBusesPage(PassengerController.session.availableBuses(cbOrigin.getSelectedItem().toString(), cbDestination.getSelectedItem().toString(),date), date);
+					mainFrame.availableBusesPage(PassengerService.dbApplicationContext.availableBuses(cbOrigin.getSelectedItem().toString(), cbDestination.getSelectedItem().toString(),date), date);
 				}
 				else {
 					StylesAndHelperMethods.errorMessage("Select a future date.");

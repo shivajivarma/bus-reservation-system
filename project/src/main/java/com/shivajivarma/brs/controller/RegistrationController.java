@@ -3,6 +3,7 @@ package com.shivajivarma.brs.controller;
 import java.awt.event.ActionEvent;
 
 import com.shivajivarma.brs.model.Passenger;
+import com.shivajivarma.brs.model.services.PassengerService;
 import com.shivajivarma.brs.ui.Alert;
 import com.shivajivarma.brs.ui.RegistrationPanelView;
 import com.shivajivarma.brs.ui.View;
@@ -17,14 +18,13 @@ public class RegistrationController implements Controller{
 	private RegistrationController _this;
 	
 	private RegistrationPanelView registrationView;
-	private Passenger passenger;
-	private PassengerController passengerController;
+	private Passenger passenger = new Passenger();
+	private PassengerService passengerService;
 	
 	
     public RegistrationController(View registrationView) {
     	_this = this;
     	this.registrationView = (RegistrationPanelView) registrationView;
-    	this.passenger =  new Passenger();
     }
     
     public void control(MasterController masterController){
@@ -41,7 +41,7 @@ public class RegistrationController implements Controller{
 					passenger.setUsername(registrationView.getUsername());
 					if(_this.isUsernameAvailable()){
 						_this.register();
-						Alert.errorMessage(Messages.SUCCESS_REGISTRATION);
+						Alert.successMessage(Messages.SUCCESS_REGISTRATION);
 						masterController.loginControl();
 					}else{
 						Alert.errorMessage(Messages.ERROR_USERNAME_NOT_AVAILABLE);
@@ -53,12 +53,11 @@ public class RegistrationController implements Controller{
     }
     
     private boolean isUsernameAvailable(){
-    	if(passengerController == null){
-    		passengerController = new PassengerController(passenger);
-    	}else{
-    		passengerController.updateModel(passenger);
+    	if(passengerService == null){
+    		passengerService = new PassengerService();
     	}
-    	return passengerController.isUsernameAvailable();
+    	passengerService.updateModel(passenger);
+    	return passengerService.isUsernameAvailable();
     }
     
     private void register(){
@@ -66,8 +65,8 @@ public class RegistrationController implements Controller{
     	passenger.setPassword(registrationView.getPassword());
     	passenger.setMobile(Long.parseLong(registrationView.getMobile()));
     	passenger.setEmail(registrationView.getEmail());
-    	passengerController.updateModel(passenger);
-    	passengerController.register();
+    	passengerService.updateModel(passenger);
+    	passengerService.register();
     }
     
 }

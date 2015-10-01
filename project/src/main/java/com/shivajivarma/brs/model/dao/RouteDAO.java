@@ -15,7 +15,7 @@
  * <Modification History>
  */
 
-package com.shivajivarma.brs.dao;
+package com.shivajivarma.brs.model.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -2,11 +2,13 @@
 package com.shivajivarma.brs.ui;
 
 import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
+
 import java.util.Collection;
 
-import com.shivajivarma.brs.dao.DBConnection;
 import com.shivajivarma.brs.model.BusBean;
+import com.shivajivarma.brs.model.dao.DBConnection;
 
 /**
  * 
