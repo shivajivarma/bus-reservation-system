@@ -15,6 +15,10 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
     
+    <bean id="routeDAO" class="com.shivajivarma.brs.model.dao.RouteDAOImpl">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
      
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />

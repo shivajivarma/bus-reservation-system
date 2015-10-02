@@ -4,6 +4,7 @@ import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -113,5 +114,21 @@ public class ViewComponentFactory {
 		JPasswordField passwordField = createJPasswordFieldNormal();
 		passwordField.setBounds(coordinates[0],coordinates[1],coordinates[2],coordinates[3]);
 		return passwordField;
+	}
+	
+	/*
+	 * Combo boxes
+	 */
+	
+	public static JComboBox<String> createJComboBoxNormal(){
+		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.setFont(FONT_NORMAL);
+		return comboBox;
+	}
+	
+	public static JComboBox<String> createJComboBoxNormal(int[] coordinates){
+		JComboBox<String> comboBox = createJComboBoxNormal();
+		comboBox.setBounds(coordinates[0],coordinates[1],coordinates[2],coordinates[3]);
+		return comboBox;
 	}
 }

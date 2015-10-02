@@ -56,34 +56,6 @@ public class PassengerService implements Service{
 	}
 	
 	
-	/*public boolean cancelTicket(String tid){
-		ReserveDAO rd = new ReserveDAO();
-		ReserveBean rb = new ReserveBean();
-		rb.setPid(sessionPassenger.getId());
-		rb.setTid(Long.parseLong(tid));
-		
-		try{
-			rd.remove(rb);
-			return true;
-		}catch(EmptyResultSetException erse){
-			return false;
-		} catch (DBConnectException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}*/
-	/*
-	public Collection<ReserveBean> bookingHistory(){
-		ReserveDAO rd = new ReserveDAO();
-		
-		Collection<ReserveBean> rbs = null;
-		try {
-			rbs = rd.findHistory(sessionPassenger.getId());
-		} catch (DBConnectException e) {
-			e.printStackTrace();
-		}
-		return rbs;
-	}*/
 /*	
 	public Collection<BusBean> availableBuses(String origin, String destination, String date){
 		BusDAO bd = new BusDAO();

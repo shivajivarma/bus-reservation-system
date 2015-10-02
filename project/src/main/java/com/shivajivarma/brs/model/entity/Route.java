@@ -1,7 +1,5 @@
 package com.shivajivarma.brs.model.entity;
 
-import com.shivajivarma.brs.model.Model;
-
 /**
  * The Bean class, which holds route details.
  * 
@@ -9,19 +7,21 @@ import com.shivajivarma.brs.model.Model;
  */
 public class Route implements Entity {
 
+	public static final String indentity = "Route";
+	
 	private long id;
 	private String origin;
 	private String destination;
-	
-	public Route(){
+
+	public Route() {
 	}
-	
+
 	public Route(long id, String origin, String destination) {
 		this.id = id;
 		this.origin = origin;
 		this.destination = destination;
 	}
-	
+
 	public long getId() {
 		return id;
 	}
@@ -45,9 +45,10 @@ public class Route implements Entity {
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Route::[ID=" + id + ",ORIGIN=" + origin + ",DESTINATION=" + destination + "]";
+		return "Route::[ID=" + id + ",ORIGIN=" + origin + ",DESTINATION="
+				+ destination + "]";
 	}
 }

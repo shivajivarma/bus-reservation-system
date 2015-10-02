@@ -6,12 +6,10 @@ Project Documentation: http://shivajivarma.com/project/2014/02/09/bus-reservatio
 
 
 Setup:
+1. Install Maven plugin in Eclipse (http://download.eclipse.org/technology/m2e/releases/)
 
-download.eclipse.org/technology/m2e/releases/
+2. Database setup
 
-Database setup
+3. Set Maven goals Eg: compile, package
 
-Maven goal - compile
-
-java setup eclise
-
+4. Configure Java SDK in Eclipse

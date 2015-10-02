@@ -24,19 +24,7 @@ public class HomeTabsPanelView extends BaseView implements View{
 	 */
 	public HomeTabsPanelView() {
 		this.initializeLabels();
-		this.initializeComponents();
-		
-		/*
-		 * Initializing elements and setting styles.
-		 */
-		/*try {
-			reservationPanel = new ReservationPanel(mainFrame);
-		} catch (DBConnectException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
-			
+		this.initializeComponents();	
 	}
 	
 	private void initializeLabels() {

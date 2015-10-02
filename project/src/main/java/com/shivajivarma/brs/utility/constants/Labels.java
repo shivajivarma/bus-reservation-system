@@ -20,5 +20,7 @@ public class Labels {
 	public static final String TICKET_NO = "Ticket no.";
 	public static final String LOGOUT = "Logout";
 	public static final String PRINT = "Print";
+	public static final String ORIGIN = "Origin";
+	public static final String DESTINATION = "Destination";
 	
 }
