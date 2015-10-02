@@ -1,4 +1,4 @@
-package com.shivajivarma.brs.model.services;
+package com.shivajivarma.brs.model.service;
 /**
  * @author: Shivaji Varma (contact@shivajivarma.com)
  */

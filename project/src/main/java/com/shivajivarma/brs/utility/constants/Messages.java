@@ -9,4 +9,7 @@ public class Messages {
 	public static final String ERROR_NO_USERNAME = "Username is not valid!";
 	public static final String SUCCESS_REGISTRATION = "Registration successful";
 	public static final String ERROR_WRONG_PASSWORD = "Wrong password!";
+	public static final String UNKNOWN_TICKET_NO = "Unknown ticket no.";
+	public static final String NO_ACCESS_TO_CANCEL = "You don't have access to cancel.";
+	public static final String CANCEL_SUCCESS = "Cancellation successful";
 }

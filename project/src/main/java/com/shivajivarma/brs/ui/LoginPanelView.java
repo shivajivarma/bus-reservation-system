@@ -34,11 +34,7 @@ import com.shivajivarma.brs.utility.constants.Labels;
 @SuppressWarnings("serial")
 public class LoginPanelView extends BaseView implements View{
 	
-	//this reference
-	LoginPanelView _this;
-	
 	// UI Components which help in taking input from user and display output.
-	//BRSView mainFrame;
 	private JTextField username;
 	private JPasswordField password;
 	private JButton loginButton,registerButton;
@@ -48,7 +44,6 @@ public class LoginPanelView extends BaseView implements View{
 	 * The following constructor initializes buttons,fields,labels and adds them to panel.
 	 */
 	public LoginPanelView() {
-		_this = this;
 		this.initializeLabels();
 		this.initializeComponents();	
 	}

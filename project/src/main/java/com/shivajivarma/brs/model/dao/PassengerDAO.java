@@ -2,7 +2,7 @@ package com.shivajivarma.brs.model.dao;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 
-import com.shivajivarma.brs.model.Passenger;
+import com.shivajivarma.brs.model.entity.Passenger;
 
 //CRUD operations
 public interface PassengerDAO {

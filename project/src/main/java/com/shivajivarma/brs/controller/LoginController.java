@@ -4,12 +4,11 @@ import java.awt.event.ActionEvent;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 
-import com.shivajivarma.brs.model.Passenger;
-import com.shivajivarma.brs.model.services.PassengerService;
+import com.shivajivarma.brs.model.entity.Passenger;
+import com.shivajivarma.brs.model.service.PassengerService;
 import com.shivajivarma.brs.ui.Alert;
 import com.shivajivarma.brs.ui.LoginPanelView;
 import com.shivajivarma.brs.ui.View;
-import com.shivajivarma.brs.utility.EventAdapters.ActionAdapter;
 import com.shivajivarma.brs.utility.constants.Messages;
 
 /**
@@ -28,7 +27,8 @@ public class LoginController implements Controller{
     	this.passenger = new Passenger();
     }
     
-    public void control(MasterController masterController){
+    public void control(Controller parentController){
+    	MasterController masterController = (MasterController) parentController;
     	/**
 		 *  On click of register button, switch control to RegistrationController
 		 */
@@ -65,10 +65,8 @@ public class LoginController implements Controller{
     	if(passengerService == null){
     		passengerService = new PassengerService();
     	}
-    	passengerService.updateModel(passenger);
+    	passengerService.setModel(passenger);
     	return passengerService.login();
-    }
-    
-    
+    }    
     
 }

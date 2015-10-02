@@ -1,4 +1,4 @@
-package com.shivajivarma.brs.ui;
+/*package com.shivajivarma.brs.ui;
 
 import java.awt.Color;
 import java.awt.event.*;
@@ -6,9 +6,11 @@ import java.util.Iterator;
 
 import javax.swing.*;
 
-import com.shivajivarma.brs.model.RouteBean;
+import com.shivajivarma.brs.controller.ActionAdapter;
+import com.shivajivarma.brs.controller.ItemAdapter;
 import com.shivajivarma.brs.model.dao.RouteDAO;
-import com.shivajivarma.brs.model.services.PassengerService;
+import com.shivajivarma.brs.model.entity.Route;
+import com.shivajivarma.brs.model.service.PassengerService;
 import com.shivajivarma.brs.utility.exceptions.DBConnectException;
 
 public class ReservationPanel extends JPanel{
@@ -37,9 +39,9 @@ public class ReservationPanel extends JPanel{
 		lOrigin.setFont(StylesAndHelperMethods.FONT_NORMAL);
 		
 		cbOrigin=new JComboBox<String>();
-		Iterator<RouteBean> originIterator = new RouteDAO().findOrigins().iterator();
+		Iterator<Route> originIterator = new RouteDAO().findOrigins().iterator();
 		do{
-			RouteBean rb = originIterator.next();
+			Route rb = originIterator.next();
 			cbOrigin.addItem(rb.getOrigin());
 		}while(originIterator.hasNext());
 		cbOrigin.setBounds(x+0,y+50,200,30);
@@ -50,9 +52,9 @@ public class ReservationPanel extends JPanel{
 		lDestination.setFont(StylesAndHelperMethods.FONT_NORMAL);
 		
 		cbDestination=new JComboBox<String>();
-		Iterator<RouteBean> destinationIteration = new RouteDAO().findDestinations(cbOrigin.getSelectedItem().toString()).iterator();
+		Iterator<Route> destinationIteration = new RouteDAO().findDestinations(cbOrigin.getSelectedItem().toString()).iterator();
 		do{
-			RouteBean rb = destinationIteration.next();
+			Route rb = destinationIteration.next();
 			cbDestination.addItem(rb.getDestination());
 		}while(destinationIteration.hasNext());
 		cbDestination.setBounds(x+300,y+50,200,30);
@@ -110,12 +112,12 @@ public class ReservationPanel extends JPanel{
 				
 				if(e.getStateChange()==1){
 					cbDestination.removeAllItems();
-					Iterator<RouteBean> destinationIteration;
+					Iterator<Route> destinationIteration;
 					try {
 						destinationIteration = new RouteDAO().findDestinations(cbOrigin.getSelectedItem().toString()).iterator();
 					
 					do{
-						RouteBean rb = destinationIteration.next();
+						Route rb = destinationIteration.next();
 						cbDestination.addItem(rb.getDestination());
 					}while(destinationIteration.hasNext());
 				
@@ -181,3 +183,4 @@ public class ReservationPanel extends JPanel{
 	
 }
 
+*/

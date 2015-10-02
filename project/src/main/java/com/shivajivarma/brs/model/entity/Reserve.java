@@ -1,11 +1,13 @@
-package com.shivajivarma.brs.model;
+package com.shivajivarma.brs.model.entity;
+
+import com.shivajivarma.brs.model.Model;
 
 /**
- * The Bean class, which holds reservation details.
+ * The Bean class, which holds reserve table details.
  * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
  * @see ReserveService
  */
-public class Reserve{
+public class Reserve implements Entity{
 	
 	public static final String indentity = "Reserve";
 	
@@ -15,6 +17,7 @@ public class Reserve{
 	private String dt;
 	private String tstamp;
 	private int seat;
+	
 	
 	public Reserve(){
 	}
@@ -77,12 +80,7 @@ public class Reserve{
 			pb = new Passenger();
 		this.pb.setId(pid);
 	}
-	public Passenger getPassengerBean() {
-		return pb;
-	}
-	public void setPassengerBean(Passenger pb) {
-		this.pb = pb;
-	}*/
+	*/
 	
 	/* BusBean */
 	/*public long getBid() {
@@ -93,13 +91,13 @@ public class Reserve{
 			bb = new BusBean();
 		this.bb.setBid(bid);
 	}
-	public BusBean getBusBean() {
-		return bb;
-	}
-	public void setBusBean(BusBean bb) {
-		this.bb = bb;
-	}*/
+	*/
 	
+	@Override
+	public String toString() {
+		return "Reserve::[ID=" + id + ",PID=" + pid + ",BID=" + bid
+				+ ",Date=" + dt + ",Time Stamp=" + tstamp + ",Seat=" + seat + "]";
+	}	
 
 }
 

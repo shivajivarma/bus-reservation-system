@@ -1,18 +1,3 @@
-/**
- * ALL WORKS � SHIVAJI VARMA<contact@shivajivarma.com>
- * 
- * PassengerDAO.java
- * 
- * This file contains PassengerDAO class which helps in accessing and
- * modifying Passenger table in database.
- * 
- * Version 1.0
- * 
- * Created on 3 SEP 2012
- * 
- * <Modification History>
- */
-
 package com.shivajivarma.brs.model.dao;
 
 import java.sql.PreparedStatement;
@@ -21,8 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.shivajivarma.brs.model.BusBean;
-import com.shivajivarma.brs.model.RouteBean;
+import com.shivajivarma.brs.model.entity.Bus;
+import com.shivajivarma.brs.model.entity.Route;
 import com.shivajivarma.brs.utility.exceptions.DBConnectException;
 
 /**
@@ -36,8 +21,8 @@ public class BusDAO {
 	/** 
 	 * Provides the list of buses from selected origin to selected destination on given date 
 	 * */
-	public Collection<BusBean> find(String origin,String destination,String date)throws  DBConnectException {
-		Collection<BusBean> bbs = new ArrayList<BusBean>();
+	public Collection<Bus> find(String origin,String destination,String date)throws  DBConnectException {
+		Collection<Bus> bbs = new ArrayList<Bus>();
 		try {
 			DBConnection.openConnection();
 			PreparedStatement pst = DBConnection.conn.prepareStatement("SELECT b.bid,r.origin,r.destination,b.ac,b.depttime,b.arrtime,b.fare,(select 40-count(*) FROM reserve re where re.bid=b.bid and dt=?)  AS AvailablityCount  "+
@@ -49,17 +34,17 @@ public class BusDAO {
 			pst.setString(3, destination);			
 			
 			ResultSet rs = pst.executeQuery(); 
-			BusBean bb = null;
-			RouteBean rob = null;
+			Bus bb = null;
+			Route rob = null;
 			while (rs.next()) {
 				
-				bb = new BusBean();
+				bb = new Bus();
 				bb.setBid(rs.getLong("BID"));
 				
-				rob = new RouteBean();
+				rob = new Route();
 				rob.setOrigin(rs.getString("ORIGIN"));
 				rob.setDestination(rs.getString("DESTINATION"));
-				bb.setRouteBean(rob);
+				//bb.setRouteBean(rob);
 				
 				if(rs.getInt("AC") == 1)
 					bb.setAc(true);

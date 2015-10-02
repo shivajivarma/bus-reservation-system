@@ -23,7 +23,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.shivajivarma.brs.model.RouteBean;
+import com.shivajivarma.brs.model.entity.Route;
 import com.shivajivarma.brs.utility.exceptions.DBConnectException;
 
 /**
@@ -41,9 +41,9 @@ public class RouteDAO {
 	 * @return Collect object holding set of origins.
 	 * @throws DBConnectException 
 	 */
-	public Collection<RouteBean> findOrigins() throws DBConnectException {
-		RouteBean rb = null;
-		Collection<RouteBean> rbs = new ArrayList<RouteBean>();
+	public Collection<Route> findOrigins() throws DBConnectException {
+		Route rb = null;
+		Collection<Route> rbs = new ArrayList<Route>();
 
 		try {
 			DBConnection.openConnection();
@@ -51,7 +51,7 @@ public class RouteDAO {
 			ResultSet rs = null;
 			rs = st.executeQuery("SELECT DISTINCT(origin) FROM route r,bus b where r.rid=b.rid");
 			while (rs.next()) {
-				rb = new RouteBean();
+				rb = new Route();
 				rb.setOrigin(rs.getString("origin"));
 				rbs.add(rb);
 			}
@@ -68,9 +68,9 @@ public class RouteDAO {
 	 * @return Collect object holding set of origins.
 	 * @throws DBConnectException 
 	 */
-	public Collection<RouteBean> findDestinations(String origin) throws DBConnectException {
-		RouteBean rb = null;
-		Collection<RouteBean> rbs = new ArrayList<RouteBean>();
+	public Collection<Route> findDestinations(String origin) throws DBConnectException {
+		Route rb = null;
+		Collection<Route> rbs = new ArrayList<Route>();
 
 		try {
 			DBConnection.openConnection();
@@ -78,7 +78,7 @@ public class RouteDAO {
 			ResultSet rs = null;
 			rs = st.executeQuery("SELECT DISTINCT(destination) FROM route r,bus b where r.rid=b.rid AND origin='"+origin+"'");
 			while (rs.next()) {
-				rb = new RouteBean();
+				rb = new Route();
 				rb.setDestination(rs.getString("destination"));
 				rbs.add(rb);
 			}

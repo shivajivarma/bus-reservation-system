@@ -4,7 +4,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.text.ViewFactory;
 
 import com.shivajivarma.brs.utility.ViewComponentFactory;
 import com.shivajivarma.brs.utility.constants.Labels;
@@ -15,9 +14,8 @@ import com.shivajivarma.brs.utility.constants.Labels;
 @SuppressWarnings("serial")
 public class HomeTabsPanelView extends BaseView implements View{
 
-	HomeTabsPanelView _this;
-	
 	JTabbedPane tabs;
+
 	JLabel welcome,date;
 	JButton logoutButton;
 
@@ -25,7 +23,6 @@ public class HomeTabsPanelView extends BaseView implements View{
 	 * The following constructor initializes buttons,fields,labels and adds them to panel.
 	 */
 	public HomeTabsPanelView() {
-		_this = this;
 		this.initializeLabels();
 		this.initializeComponents();
 		
@@ -38,30 +35,6 @@ public class HomeTabsPanelView extends BaseView implements View{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		cancelPanel = new CancelPanel();
-		histortyPanel = new HistoryPanel();
-		
-		lWelcome=new JLabel("Welcome "+PassengerController.session.getSessionPassenger().getName());
-		lWelcome.setBounds(600,10,300,30);
-		lWelcome.setFont(StylesAndHelperMethods.FONT_NORMAL);
-		
-		date=new JLabel("Date :  "+StylesAndHelperMethods.currentDate());
-		date.setBounds(10,10,300,30);
-		date.setFont(StylesAndHelperMethods.FONT_NORMAL);
-		
-		btnLogout=new JButton("Logout");
-		btnLogout.setBounds(900,10,100,32);
-		btnLogout.setFont(StylesAndHelperMethods.FONT_NORMAL);
-		
-		/*
-		 * Adding labels and text fields to login panel.
-		 */
-		/*add(lWelcome);
-		add(date);
-		add(btnLogout);
-		add(jTab);
-			
-		
 		*/
 			
 	}
@@ -84,8 +57,8 @@ public class HomeTabsPanelView extends BaseView implements View{
 		this.add(logoutButton);
 	}
 	
-	public void insertTab(JPanel tab, String tabName){
-		tabs.add(tab,tabName);
+	public void insertTab(View tab, String tabName){
+		tabs.add((JPanel)tab,tabName);
 		this.revalidate();
 		this.repaint();
 	}
@@ -93,7 +66,11 @@ public class HomeTabsPanelView extends BaseView implements View{
 	public JButton getLogoutButton() {
 		return logoutButton;
 	}
-
+	
+	public JTabbedPane getTabs() {
+		return tabs;
+	}
+	
 	public void setWelcome(String username) {
 		this.welcome.setText("Welcome : " + username);
 	}

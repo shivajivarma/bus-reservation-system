@@ -1,4 +1,4 @@
-package com.shivajivarma.brs.ui;
+/*package com.shivajivarma.brs.ui;
 
 
 import java.awt.Color;
@@ -12,9 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-import com.shivajivarma.brs.model.BusBean;
-import com.shivajivarma.brs.model.services.PassengerService;
-import com.shivajivarma.brs.utility.EventAdapters.ActionAdapter;
+import com.shivajivarma.brs.model.entity.Bus;
+import com.shivajivarma.brs.model.service.PassengerService;
 
 public class AvailableBusesPanel extends JPanel {
 	
@@ -25,12 +24,12 @@ public class AvailableBusesPanel extends JPanel {
 	long sbusid=-1;
 	long[] busid=new long[50];
 	String date;
-	Collection<BusBean> bbs;
+	Collection<Bus> bbs;
 	
 	JRadioButton jrbSelectBus[]=new JRadioButton[100];
 	JButton btnSubmit,btnBack;
 		
-		public AvailableBusesPanel(BRSView mainFrame, Collection<BusBean> bbs, String date){
+		public AvailableBusesPanel(BRSView mainFrame, Collection<Bus> bbs, String date){
 			this.mainFrame = mainFrame;
 			self = this;
 			this.date = date;
@@ -59,10 +58,10 @@ public class AvailableBusesPanel extends JPanel {
 				add(btnSubmit);
 				add(btnBack);
 				
-				Iterator<BusBean> irbs = bbs.iterator();
+				Iterator<Bus> irbs = bbs.iterator();
 			
 				while(irbs.hasNext()){
-					BusBean bb = irbs.next();
+					Bus bb = irbs.next();
 					String type;
 					if(bb.isAc()) 
 						type ="   AC     ";
@@ -93,9 +92,9 @@ public class AvailableBusesPanel extends JPanel {
 				
 				public void actionPerformed(ActionEvent ae) {
 					int k;
-					Iterator<BusBean> irbs = self.bbs.iterator();
+					Iterator<Bus> irbs = self.bbs.iterator();
 					for (k= 0; irbs.hasNext(); k++) {
-						BusBean bb = irbs.next();
+						Bus bb = irbs.next();
 						if(jrbSelectBus[k].isSelected()){
 							//mainFrame.seatLayoutPage(PassengerController.session.seatsAvailablity(bb.getBid(),self.date), bb, self.date);
 							self.setVisible(false);
@@ -121,3 +120,4 @@ public class AvailableBusesPanel extends JPanel {
 				
 		}
 }
+*/

@@ -10,9 +10,13 @@
     <bean id="reserveDAO" class="com.shivajivarma.brs.model.dao.ReserveDAOImpl">
         <property name="dataSource" ref="dataSource" />
     </bean>
+    
+    <bean id="reservationDAO" class="com.shivajivarma.brs.model.dao.ReservationDAOImpl">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
      
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
- 
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
         <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
         <property name="username" value="system" />

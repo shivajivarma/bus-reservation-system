@@ -16,46 +16,13 @@ import com.shivajivarma.brs.utility.constants.Labels;
 @SuppressWarnings("serial")
 public class CancellationTabView extends BaseView implements View{
 	
-	CancellationTabView _this;
-	
 	JTextField ticketNumber;
 	JButton submitButton;
-	
-	public JButton getSubmitButton() {
-		return submitButton;
-	}
 
 	public CancellationTabView() {
-		_this = this;
-		
 		this.setBackground(Color.white);
 		this.initializeLabels();
 		this.initializeComponents();
-		
-		/*
-		btnSubmit.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent ae) {
-
-				if (tfTid.getText().equals("")) {
-					StylesAndHelperMethods.errorMessage("Enter ticket number");
-				}else{
-					try {
-						if (PassengerController.session.cancelTicket(tfTid.getText())) {
-							StylesAndHelperMethods.successMessage("Cancellation Successful");
-							self.reset();
-						} else{
-							StylesAndHelperMethods.errorMessage("Tid is not valid");
-						}
-					} catch (NumberFormatException ne) {
-						StylesAndHelperMethods.errorMessage("Please use only numbers.");
-						self.reset();
-					}
-				}
-
-			}
-
-		});*/
 	}
 	
 	private void initializeLabels() {
@@ -89,6 +56,14 @@ public class CancellationTabView extends BaseView implements View{
 			return false;
 		}
 		return true;
+	}
+
+	public String getTicketNumber() {
+		return ticketNumber.getText();
+	}
+
+	public JButton getSubmitButton() {
+		return submitButton;
 	}
 	
 }

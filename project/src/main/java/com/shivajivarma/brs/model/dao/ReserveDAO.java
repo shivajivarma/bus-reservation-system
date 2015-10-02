@@ -2,8 +2,7 @@ package com.shivajivarma.brs.model.dao;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 
-import com.shivajivarma.brs.model.Reserve;
-import com.shivajivarma.brs.utility.exceptions.CannotDeleteRecordException;
+import com.shivajivarma.brs.model.entity.Reserve;
 
 //CRUD operations
 public interface ReserveDAO {

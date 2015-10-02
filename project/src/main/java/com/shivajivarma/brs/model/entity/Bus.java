@@ -1,17 +1,16 @@
-/**
- * Author: SHIVAJI VARMA <contact@shivajivarma.com>
- */
-package com.shivajivarma.brs.model;
+package com.shivajivarma.brs.model.entity;
+
 
 /**
  * 
  * This is Bean class, which holds all the bus details.
- *
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
+ * @see PassengerService
  */
-public class BusBean{
+public class Bus implements Entity{
 	
 	private long bid;
-	private RouteBean rob;
+	private Route rob;
 	private boolean ac;
 	private int fare;
 	private String deptime;
@@ -27,20 +26,20 @@ public class BusBean{
 	}
 	
 	/* RouteBean */
-	public long getRid() {
+	/*public long getRid() {
 		return rob.getRid();
 	}
 	public void setRid(long rid) {
 		if(rob == null)
-			rob = new RouteBean();
+			rob = new Route();
 		this.rob.setRid(rid);
 	}
-	public RouteBean getRouteBean() {
+	public Route getRouteBean() {
 		return rob;
 	}
-	public void setRouteBean(RouteBean rob) {
+	public void setRouteBean(Route rob) {
 		this.rob = rob;
-	}
+	}*/
 	
 	public boolean isAc() {
 		return ac;

@@ -43,7 +43,7 @@ public class MasterView{
 	        /*
 	         * Give control to master controller
 	         */
-	        controller.control();
+	        controller.control(null);
 	    }
 	    
 	    public boolean insertPanel(View panel, String align){

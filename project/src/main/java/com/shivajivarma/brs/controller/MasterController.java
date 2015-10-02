@@ -1,9 +1,9 @@
 package com.shivajivarma.brs.controller;
 
-import com.shivajivarma.brs.model.Model;
-import com.shivajivarma.brs.model.services.Service;
+import com.shivajivarma.brs.model.entity.Passenger;
+import com.shivajivarma.brs.model.service.PassengerService;
+import com.shivajivarma.brs.model.service.Service;
 import com.shivajivarma.brs.ui.BannerViewPanel;
-import com.shivajivarma.brs.ui.CancellationTabView;
 import com.shivajivarma.brs.ui.HomeTabsPanelView;
 import com.shivajivarma.brs.ui.LoginPanelView;
 import com.shivajivarma.brs.ui.MasterView;
@@ -13,21 +13,21 @@ import com.shivajivarma.brs.ui.View;
 /**
  * @author: Shivaji Varma (contact@shivajivarma.com)
  */
-public class MasterController{
+public class MasterController implements Controller{
 	
 	private MasterView masterView;
 	private View bannerView;
 	private Service passengerService;
-	private Model passenger;
     
 	public MasterController(MasterView masterView) {
     	this.masterView = masterView;
     }
     
       
-    public void control(){
+    public void control(Controller parentController){
     	this.bannerView = new BannerViewPanel();
-    	this.loginControl();
+    	//this.loginControl();
+    	this.autoLoginControl();
     }
     
     public void loginControl(){
@@ -39,6 +39,17 @@ public class MasterController{
     	
     	Controller loginController = new LoginController(loginForm);
     	loginController.control(this);
+    }
+    
+    public void autoLoginControl(){
+        	Passenger passenger = new Passenger();
+        	passenger.setUsername("test");
+        	passenger.setPassword("test");
+        	passengerService = new PassengerService();
+        	((PassengerService)passengerService).setModel(passenger);
+        	((PassengerService)passengerService).login();
+        	this.setPassengerService(passengerService);
+    		this.applicationControl();
     }
     
     public void registrationControl(){
@@ -54,19 +65,13 @@ public class MasterController{
     
     public void applicationControl(){
     	HomeTabsPanelView homeTabs = new HomeTabsPanelView();
-    	CancellationTabView cancelTab = new CancellationTabView();
-    	
-    	homeTabs.insertTab(cancelTab, "Cancel ticket");
     	
     	masterView.clear();
     	masterView.insertPanel(bannerView, "north");
     	masterView.insertPanel(homeTabs, "center");
     	
-    	Controller homeTabsController = new HomeTabsController(homeTabs);
-    	homeTabsController.control(this);
-    	
-    	Controller cancellationController = new CancellationController(cancelTab);
-    	cancellationController.control(this);
+    	HomeTabsMediator homeTabsMediator = new HomeTabsMediator(homeTabs);
+    	homeTabsMediator.control(this);   	
     }
     
     public Service getPassengerService() {

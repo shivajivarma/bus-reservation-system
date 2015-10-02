@@ -1,4 +1,4 @@
-package com.shivajivarma.brs.ui;
+/*package com.shivajivarma.brs.ui;
 
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -11,9 +11,9 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.shivajivarma.brs.model.BusBean;
-import com.shivajivarma.brs.model.Reserve;
-import com.shivajivarma.brs.model.services.PassengerService;
+import com.shivajivarma.brs.model.entity.Bus;
+import com.shivajivarma.brs.model.entity.Reserve;
+import com.shivajivarma.brs.model.service.PassengerService;
 import com.shivajivarma.brs.utility.ActionAdapter;
 
 public class SeatLayout extends JPanel{
@@ -27,10 +27,10 @@ public class SeatLayout extends JPanel{
 	ImageIcon booked=new ImageIcon(getClass().getResource("/assets/booked_seat.jpg"));
 	ImageIcon avail=new ImageIcon(getClass().getResource("/assets/available_seat.jpg"));
 	JButton btnBook,btnBack;
-	BusBean bb;
+	Bus bb;
 	String date;
 	
-	public SeatLayout(BRSView mainFrame, Collection<Integer> occupiedSeats, BusBean bb, String date){
+	public SeatLayout(BRSView mainFrame, Collection<Integer> occupiedSeats, Bus bb, String date){
 		this.mainFrame = mainFrame;
 		self = this;
 		
@@ -128,3 +128,4 @@ public class SeatLayout extends JPanel{
 	
 }
 
+*/

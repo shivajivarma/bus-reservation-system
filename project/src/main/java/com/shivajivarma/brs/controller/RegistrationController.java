@@ -2,12 +2,11 @@ package com.shivajivarma.brs.controller;
 
 import java.awt.event.ActionEvent;
 
-import com.shivajivarma.brs.model.Passenger;
-import com.shivajivarma.brs.model.services.PassengerService;
+import com.shivajivarma.brs.model.entity.Passenger;
+import com.shivajivarma.brs.model.service.PassengerService;
 import com.shivajivarma.brs.ui.Alert;
 import com.shivajivarma.brs.ui.RegistrationPanelView;
 import com.shivajivarma.brs.ui.View;
-import com.shivajivarma.brs.utility.EventAdapters.ActionAdapter;
 import com.shivajivarma.brs.utility.constants.Messages;
 
 /**
@@ -27,8 +26,9 @@ public class RegistrationController implements Controller{
     	this.registrationView = (RegistrationPanelView) registrationView;
     }
     
-    public void control(MasterController masterController){
-    
+    public void control(Controller parentController){
+    	MasterController masterController = (MasterController) parentController;
+    	
     	registrationView.getCancelButton().addActionListener(new ActionAdapter() {
 			public void actionPerformed(ActionEvent ae) {
 				registrationView.refresh();
@@ -56,7 +56,7 @@ public class RegistrationController implements Controller{
     	if(passengerService == null){
     		passengerService = new PassengerService();
     	}
-    	passengerService.updateModel(passenger);
+    	passengerService.setModel(passenger);
     	return passengerService.isUsernameAvailable();
     }
     
@@ -65,7 +65,7 @@ public class RegistrationController implements Controller{
     	passenger.setPassword(registrationView.getPassword());
     	passenger.setMobile(Long.parseLong(registrationView.getMobile()));
     	passenger.setEmail(registrationView.getEmail());
-    	passengerService.updateModel(passenger);
+    	passengerService.setModel(passenger);
     	passengerService.register();
     }
     

@@ -1,10 +1,10 @@
-package com.shivajivarma.brs.model.services;
+package com.shivajivarma.brs.model.service;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.dao.EmptyResultDataAccessException;
 
-import com.shivajivarma.brs.model.Passenger;
 import com.shivajivarma.brs.model.dao.PassengerDAO;
+import com.shivajivarma.brs.model.entity.Passenger;
 
 /**
  * @author: Shivaji Varma (contact@shivajivarma.com)
@@ -21,8 +21,12 @@ public class PassengerService implements Service{
 		dbApplicationContext = new ClassPathXmlApplicationContext("spring-jdbc.xml");
 	}
 	
-	public void updateModel(Passenger passenger){
+	public void setModel(Passenger passenger){
 		this.passenger = passenger;
+	}
+	
+	public Passenger getModel(){
+		return passenger;
 	}
 	
 	public boolean isUsernameAvailable(){
@@ -45,7 +49,7 @@ public class PassengerService implements Service{
 		
 		Passenger dbRecord = passengerDAO.findByUsername(passenger.getUsername());
 		if(passenger.getPassword().equals(dbRecord.getPassword())){
-			updateModel(dbRecord);
+			setModel(dbRecord);
 			return true;
 		}
 		return false;
@@ -117,60 +121,6 @@ public class PassengerService implements Service{
 			return false;
 		}
 	}
-	
-	/**
-	 * Prints tickets from history page.
-	 */
-	/* public static BufferedReader loadTicketHTML(){
-		 try {
-			return new BufferedReader(new InputStreamReader(null, "/assets/ticket.html"));
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 return null;
-	 }*/
-	 
-	 /*
-	 public static void printTickets(ArrayList<ReserveBean> rbs){
-		FileWriter fw;
-		BufferedReader ticketHTML = loadTicketHTML();;
-		try {
-			 Thread.sleep(1000);
-			  
-			 fw = new FileWriter(System.getenv("APPDATA")+"\\ticket.html");
-			
-			 String str;
-			 while((str=ticketHTML.readLine())!=null){
-				 fw.write(str);
-			 }
-			 
-			Iterator<ReserveBean> irbs = rbs.iterator();
-			ReserveBean rb;
-			while(irbs.hasNext()){
-				rb = irbs.next();
-				fw.write("<script>");
-				String render = "render({'tid':'"+rb.getTid()+"',"+
-						"'bid':'"+rb.getBid()+"',"+
-						"'origin':'"+rb.getBusBean().getRouteBean().getOrigin()+"',"+
-						"'deptime':'"+rb.getBusBean().getDeptime()+"',"+
-						"'arrtime':'"+rb.getBusBean().getArrtime()+"',"+
-						"'destination':'"+rb.getBusBean().getRouteBean().getDestination()+"',"+
-						"'seat':'"+rb.getSeat()+"',"+
-						"'date':'"+rb.getDate()+"',"+
-								 "})";	
-				fw.write(render);
-				fw.write("</script>");
-			}
-			fw.write("</body></html>");
-			ticketHTML.close();
-			fw.close();	
-			Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler file:///"+System.getenv("APPDATA")+"/ticket.html");
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} 
 	}*/
 	
 	 protected void finalize(){

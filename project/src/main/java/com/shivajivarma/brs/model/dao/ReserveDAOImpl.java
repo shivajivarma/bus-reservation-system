@@ -3,18 +3,17 @@ package com.shivajivarma.brs.model.dao;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
-import com.shivajivarma.brs.model.Passenger;
-import com.shivajivarma.brs.model.Reserve;
-import com.shivajivarma.brs.utility.exceptions.CannotDeleteRecordException;
+import com.shivajivarma.brs.model.entity.Reserve;
 
 /**
- * Following class tries to access and modify AccountDetails table in database.
- * 
- * @version 1.0
+ * @author: Shivaji Varma (contact@shivajivarma.com)
  */
 public class ReserveDAOImpl extends BaseDAO implements ReserveDAO {
 		
-	private static final String table = Reserve.indentity;
+	
+	public ReserveDAOImpl(){
+		this.table = Reserve.indentity;
+	}
 	/*
 	public void save(Reserve reserve){
 		
@@ -53,23 +52,13 @@ public class ReserveDAOImpl extends BaseDAO implements ReserveDAO {
         String query = "select * from "+table+" where id = ?";
         
         //query single row with BeanPropertyRowMapper (Passenger.class)
-        Reserve reserve = (Reserve)getJdbcTemplate().queryForObject(query, 
+        Reserve reserve = (Reserve) getJdbcTemplate().queryForObject(query, 
         		new Object[] { id }, 
 				new BeanPropertyRowMapper<Reserve>(Reserve.class));
        
         return reserve;
     }
 
-	@Override
-	public void deleteById(long id){
-
-		String query = "DELETE FROM "+table+" WHERE id=?";
-		
-		int out = getJdbcTemplate().update(query, id);
-		if(out !=0){
-			System.out.println("Reservation deleted with id="+id);
-		}
-	}
 	
 	/**
 	 * Following function deletes ticket in Reserve table for given passenger id

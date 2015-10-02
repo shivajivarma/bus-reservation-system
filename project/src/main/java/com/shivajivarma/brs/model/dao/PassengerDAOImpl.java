@@ -3,7 +3,7 @@ package com.shivajivarma.brs.model.dao;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.dao.EmptyResultDataAccessException;
 
-import com.shivajivarma.brs.model.Passenger;
+import com.shivajivarma.brs.model.entity.Passenger;
 
 /**
  * The Service class, which contains business logic to update Passenger model.
@@ -16,7 +16,7 @@ public class PassengerDAOImpl extends BaseDAO implements PassengerDAO {
 	
 	public void save(Passenger passenger){
 		
-		String sql = "INSERT INTO "+table+" VALUES(pid_auto.NEXTVAL,?,?,?,?,?)";
+		String sql = "insert into "+table+" values(pid_auto.nextval,?,?,?,?,?)";
 			 
 		getJdbcTemplate().update(sql, 
 				new Object[] { 
@@ -88,30 +88,7 @@ public class PassengerDAOImpl extends BaseDAO implements PassengerDAO {
         }
     }
  
-    @Override
-    public void deleteById(int id) {
-        String query = "delete from Employee where id=?";
-        Connection con = null;
-        PreparedStatement ps = null;
-        try{
-            con = dataSource.getConnection();
-            ps = con.prepareStatement(query);
-            ps.setInt(1, id);
-            int out = ps.executeUpdate();
-            if(out !=0){
-                System.out.println("Employee deleted with id="+id);
-            }else System.out.println("No Employee found with id="+id);
-        }catch(SQLException e){
-            e.printStackTrace();
-        }finally{
-            try {
-                ps.close();
-                con.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+    
  
     @Override
     public List<Employee> getAll() {

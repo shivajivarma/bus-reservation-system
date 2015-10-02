@@ -17,8 +17,6 @@ import com.shivajivarma.brs.utility.constants.Messages;
 @SuppressWarnings("serial")
 public class RegistrationPanelView extends BaseView implements View{
 	
-	RegistrationPanelView _this;
-	
 	JTextField username, fullname, mobile, email;
 	JPasswordField password, reEnterPassword;
 	JButton submitButton, cancelButton;
@@ -26,8 +24,6 @@ public class RegistrationPanelView extends BaseView implements View{
 	int x=250, y=40;
 	
 	public RegistrationPanelView(){
-		_this = this;
-		
 		this.initializeLabels();
 		this.initializeComponents();
 	}
