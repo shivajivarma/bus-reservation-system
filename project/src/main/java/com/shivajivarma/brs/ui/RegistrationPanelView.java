@@ -17,11 +17,11 @@ import com.shivajivarma.brs.utility.constants.Messages;
 @SuppressWarnings("serial")
 public class RegistrationPanelView extends BaseView implements View{
 	
-	JTextField username, fullname, mobile, email;
-	JPasswordField password, reEnterPassword;
-	JButton submitButton, cancelButton;
+	private JTextField username, fullname, mobile, email;
+	private JPasswordField password, reEnterPassword;
+	private JButton submitButton, cancelButton;
 	
-	int x=250, y=40;
+	private int x=250, y=40;
 	
 	public RegistrationPanelView(){
 		this.initializeLabels();

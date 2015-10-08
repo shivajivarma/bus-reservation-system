@@ -1,27 +1,16 @@
-/*package com.shivajivarma.brs.ui;
-
-import java.awt.event.ActionEvent;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+package com.shivajivarma.brs.ui;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import com.shivajivarma.brs.model.entity.Bus;
-import com.shivajivarma.brs.model.entity.Reserve;
-import com.shivajivarma.brs.model.service.PassengerService;
-import com.shivajivarma.brs.utility.ActionAdapter;
 
-public class SeatLayout extends JPanel{
+@SuppressWarnings("serial")
+public class SeatSelectionView extends BaseView implements View{
 
-	SeatLayout self;
-	
-	private static final long serialVersionUID = -2795475292083804120L;
-	BRSView mainFrame;
+	//BRSView mainFrame;
 	JLabel seats[]=new JLabel[41];
 	JCheckBox seat[]=new JCheckBox[41];
 	ImageIcon booked=new ImageIcon(getClass().getResource("/assets/booked_seat.jpg"));
@@ -30,9 +19,7 @@ public class SeatLayout extends JPanel{
 	Bus bb;
 	String date;
 	
-	public SeatLayout(BRSView mainFrame, Collection<Integer> occupiedSeats, Bus bb, String date){
-		this.mainFrame = mainFrame;
-		self = this;
+	public SeatSelectionView(/*BRSView mainFrame, Collection<Integer> occupiedSeats, Bus bb, String date*/){
 		
 		btnBook=new JButton("Book");
 		btnBack=new JButton("Back");
@@ -47,13 +34,13 @@ public class SeatLayout extends JPanel{
 			seat[i]=new JCheckBox();
 		}
 		
-		Iterator<Integer> iOccupiedSeats = occupiedSeats.iterator();
+		/*Iterator<Integer> iOccupiedSeats = occupiedSeats.iterator();
 		while(iOccupiedSeats.hasNext()){
 			int x = iOccupiedSeats.next();
 			seats[x]=new JLabel(booked);
 			seat[x].setEnabled(false);
 			
-		}
+		}*/
 		 
 	
 		for (int i = 0; i <= 9; i++) {
@@ -80,7 +67,8 @@ public class SeatLayout extends JPanel{
 		
 		add(btnBook);
 		add(btnBack);
-		
+
+		/*
 		btnBook.addActionListener(new ActionAdapter() {
 			public void actionPerformed(ActionEvent ae) {
 				
@@ -122,10 +110,8 @@ public class SeatLayout extends JPanel{
 				self.setVisible(false);
 			}
 			
-		});
+		});*/
 		
 	}
 	
 }
-
-*/

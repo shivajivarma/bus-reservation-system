@@ -15,6 +15,10 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
     
+    <bean id="busDAO" class="com.shivajivarma.brs.model.dao.BusDAOImpl">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
     <bean id="routeDAO" class="com.shivajivarma.brs.model.dao.RouteDAOImpl">
         <property name="dataSource" ref="dataSource" />
     </bean>

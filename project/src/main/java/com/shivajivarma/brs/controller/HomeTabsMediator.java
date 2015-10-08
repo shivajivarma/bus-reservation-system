@@ -17,6 +17,7 @@ import com.shivajivarma.brs.ui.View;
 public class HomeTabsMediator implements Controller{
 	
 	private HomeTabsMediator _this;
+	private MasterController masterController;
 	
 	private HomeTabsPanelView homeTabs;
 	private CancellationController cancellationController;
@@ -30,7 +31,7 @@ public class HomeTabsMediator implements Controller{
     }
     
     public void control(Controller parentController){
-    	MasterController masterController = (MasterController) parentController;
+    	masterController = (MasterController) parentController;
     	passengerService = (PassengerService) masterController.getPassengerService();
     	
     	View reservationTab = new ReservationTabView();
@@ -86,7 +87,11 @@ public class HomeTabsMediator implements Controller{
     	
     }
     
-    public PassengerService getPassengerService() {
+    public MasterController getMasterController() {
+		return masterController;
+	}
+
+	public PassengerService getPassengerService() {
 		return passengerService;
 	}
     

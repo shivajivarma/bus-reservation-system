@@ -120,14 +120,14 @@ public class ViewComponentFactory {
 	 * Combo boxes
 	 */
 	
-	public static JComboBox<String> createJComboBoxNormal(){
-		JComboBox<String> comboBox = new JComboBox<String>();
+	public static <T> JComboBox<T> createJComboBoxNormal(Class<T> type){
+		JComboBox<T> comboBox = new JComboBox<>();
 		comboBox.setFont(FONT_NORMAL);
 		return comboBox;
 	}
 	
-	public static JComboBox<String> createJComboBoxNormal(int[] coordinates){
-		JComboBox<String> comboBox = createJComboBoxNormal();
+	public static <T> JComboBox<T> createJComboBoxNormal(int[] coordinates, Class<T> type){
+		JComboBox<T> comboBox = createJComboBoxNormal(type);
 		comboBox.setBounds(coordinates[0],coordinates[1],coordinates[2],coordinates[3]);
 		return comboBox;
 	}

@@ -22,7 +22,6 @@ public class ReservationHistoryTabView extends BaseView implements View{
 	private JTable table;
 	
 	public ReservationHistoryTabView(){
-		
 		this.setBackground(Color.white);
 		this.initializeLabels();
 		this.initializeComponents();

@@ -17,19 +17,7 @@ import com.shivajivarma.brs.model.entity.Bus;
  *//*
 public class BRSView extends JFrame {
 
-	private static final long serialVersionUID = -1931380773333544736L;
 
-	//public static MainFrame brs;
-	static DBConnection conn;
-	
-	HomeTabsPanelView homePanel;
-	
-	
-	public void availableBusesPage(Collection<Bus> bbs, String date){
-		homePanel.setVisible(false);
-		homePanel = null;
-		add(BorderLayout.CENTER,new AvailableBusesPanel(this,bbs,date));
-	}
 	
 	public void seatLayoutPage(Collection<Integer> occupiedSeats, Bus bb, String date){
 		add(BorderLayout.CENTER,new SeatLayout(this,occupiedSeats, bb, date));

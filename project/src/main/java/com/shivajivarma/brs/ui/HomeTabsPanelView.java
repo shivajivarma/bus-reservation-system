@@ -14,10 +14,9 @@ import com.shivajivarma.brs.utility.constants.Labels;
 @SuppressWarnings("serial")
 public class HomeTabsPanelView extends BaseView implements View{
 
-	JTabbedPane tabs;
-
-	JLabel welcome,date;
-	JButton logoutButton;
+	private JTabbedPane tabs;
+	private JLabel welcome,date;
+	private JButton logoutButton;
 
 	/**
 	 * The following constructor initializes buttons,fields,labels and adds them to panel.

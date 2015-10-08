@@ -38,7 +38,7 @@ public class LoginPanelView extends BaseView implements View{
 	private JTextField username;
 	private JPasswordField password;
 	private JButton loginButton,registerButton;
-	final int x = 250, y = 125;
+	private int x = 250, y = 125;
 
 	/**
 	 * The following constructor initializes buttons,fields,labels and adds them to panel.

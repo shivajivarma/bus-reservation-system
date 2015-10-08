@@ -1,9 +1,11 @@
 package com.shivajivarma.brs.controller;
 
+import com.shivajivarma.brs.model.Model;
 import com.shivajivarma.brs.model.entity.Passenger;
 import com.shivajivarma.brs.model.service.PassengerService;
 import com.shivajivarma.brs.model.service.Service;
 import com.shivajivarma.brs.ui.BannerViewPanel;
+import com.shivajivarma.brs.ui.BusSelectionView;
 import com.shivajivarma.brs.ui.HomeTabsPanelView;
 import com.shivajivarma.brs.ui.LoginPanelView;
 import com.shivajivarma.brs.ui.MasterView;
@@ -64,7 +66,7 @@ public class MasterController implements Controller{
     }
     
     public void applicationControl(){
-    	HomeTabsPanelView homeTabs = new HomeTabsPanelView();
+    	View homeTabs = new HomeTabsPanelView();
     	
     	masterView.clear();
     	masterView.insertPanel(bannerView, "north");
@@ -74,6 +76,26 @@ public class MasterController implements Controller{
     	homeTabsMediator.control(this);   	
     }
     
+    public void busSelectionControl(Model route, String date){
+    	View busSelection = new BusSelectionView();
+    	
+    	masterView.clear();
+    	masterView.insertPanel(busSelection, "center");
+    	
+    	BusSelectionController busSelectionController = new BusSelectionController(busSelection,route, date);
+    	busSelectionController.control(this);   	
+    }
+    
+    public void seatSelectionControl(){
+    	View busSelection = new BusSelectionView();
+    	
+    	masterView.clear();
+    	masterView.insertPanel(busSelection, "center");
+    	
+    	// busSelectionController = new BusSelectionController(busSelection,route, date);
+    	//busSelectionController.control(this);   	
+    }
+    
     public Service getPassengerService() {
 		return passengerService;
 	}
@@ -81,7 +103,5 @@ public class MasterController implements Controller{
 	public void setPassengerService(Service passengerService) {
 		this.passengerService = passengerService;
 	}
-
-
     
 }

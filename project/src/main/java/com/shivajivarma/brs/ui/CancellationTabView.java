@@ -16,8 +16,8 @@ import com.shivajivarma.brs.utility.constants.Labels;
 @SuppressWarnings("serial")
 public class CancellationTabView extends BaseView implements View{
 	
-	JTextField ticketNumber;
-	JButton submitButton;
+	private JTextField ticketNumber;
+	private JButton submitButton;
 
 	public CancellationTabView() {
 		this.setBackground(Color.white);

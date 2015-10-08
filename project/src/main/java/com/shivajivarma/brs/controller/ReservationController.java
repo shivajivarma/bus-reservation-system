@@ -1,16 +1,14 @@
 package com.shivajivarma.brs.controller;
 
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
+import java.awt.event.ItemEvent;
 import java.util.List;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 
-import com.shivajivarma.brs.model.bean.ReservationBean;
-import com.shivajivarma.brs.model.service.ReserveService;
+import com.shivajivarma.brs.model.entity.Route;
 import com.shivajivarma.brs.model.service.RouteService;
 import com.shivajivarma.brs.ui.Alert;
-import com.shivajivarma.brs.ui.ReservationHistoryTabView;
 import com.shivajivarma.brs.ui.ReservationTabView;
 import com.shivajivarma.brs.ui.View;
 import com.shivajivarma.brs.utility.DateUtil;
@@ -19,21 +17,20 @@ import com.shivajivarma.brs.utility.DateUtil;
  * @author: Shivaji Varma (contact@shivajivarma.com)
  */
 public class ReservationController implements Controller {
-
+	
+	private ReservationController _this;
 	private ReservationTabView reservationTab;
 	private RouteService routeService;
+	private List<Route> routeStore;
 
 	public ReservationController(View reservationTab) {
+		_this = this;
 		this.reservationTab = (ReservationTabView) reservationTab;
 	}
 
 	public void control(Controller parentController) {
 
-		//pid = ((HomeTabsMediator)parentController).getPassengerService().getModel().getId();
-		/*
-		 * Populate table
-		 */
-		this.populateFields();
+		_this.populateOrigins();
 
 		reservationTab.getSubmitButton().addActionListener(new ActionAdapter() {
 			
@@ -41,13 +38,17 @@ public class ReservationController implements Controller {
 					if(reservationTab.getMonthSelectedIndex() == 0){
 						Alert.errorMessage("Select month.");
 					}
-					else if(reservationTab.getYearSelectedIndex() > DateUtil.currentYear()
+					else if(reservationTab.getYearSeleted() > DateUtil.currentYear()
 							|| reservationTab.getMonthSelectedIndex() > DateUtil.currentMonth() 
 							|| (reservationTab.getMonthSelectedIndex() == DateUtil.currentMonth() && reservationTab.getDateSelectedIndex() >= DateUtil.currentDay())){	
 						
 						String date = reservationTab.getDateSelectedIndex() + "-" 
 										+ reservationTab.getMonthSelectedIndex() + "-" 
-											+reservationTab.getYearSelectedIndex();
+											+reservationTab.getYearSeleted();
+						
+						Route route = findByDestination(reservationTab.getDestination());
+						
+						((HomeTabsMediator) parentController).getMasterController().busSelectionControl(route,date);
 						
 						//mainFrame.availableBusesPage(PassengerService.dbApplicationContext.availableBuses(cbOrigin.getSelectedItem().toString(), cbDestination.getSelectedItem().toString(),date), date);
 					}
@@ -58,9 +59,40 @@ public class ReservationController implements Controller {
 			}
 
 		});
+		
+		reservationTab.getOrigin().addItemListener(new ItemAdapter(){
+			
+			public void itemStateChanged(ItemEvent e){
+				
+				if(e.getStateChange()==1){
+					reservationTab.clearDestinations();
+					_this.populateDestinations((String)reservationTab.getOrigin().getSelectedItem());
+				}	
+			}
+		});
+		
+		reservationTab.getMonth().addItemListener(new ItemAdapter(){
+			
+			public void itemStateChanged(ItemEvent e){
+				
+				if(e.getStateChange()==1){
+					reservationTab.clearDate();
+					
+					int selectedYear = Integer.parseInt(String.valueOf(reservationTab.getYear().getSelectedItem()));
+					int selectedMonth = reservationTab.getMonth().getSelectedIndex();
+					int maxDayOfMonth = DateUtil.maxDaysOfAMonth(selectedYear, selectedMonth);
+					
+					for(int i=1;i<=maxDayOfMonth;i++){
+						reservationTab.addDate(i);
+					}
+				}
+				reservationTab.getSubmitButton().setVisible(true);
+			}
+			
+		});
 	}
 
-	private void populateFields() {
+	private void populateOrigins() {
 		if (routeService == null) {
 			routeService = new RouteService();
 		}
@@ -71,15 +103,35 @@ public class ReservationController implements Controller {
 				reservationTab.addOrigin(origin);
 			}
 			
-			/*List<String> destinations = routeService.getDestinations(origin);
-			for (String destination : destinations) {
-				reservationTab.addDestination(destination);
-			}*/
+			this.populateDestinations(origins.get(0));
 
 		} catch (EmptyResultDataAccessException e) {
-			System.out.print("No reservation history");
+			System.out.print("No Origins");
 		}
 		
 	}
+	
+	private void populateDestinations(String origin) {
+		try {
+			
+			routeStore = routeService.getDestinationsWithRoute(origin);
+			for (Route destination : routeStore) {
+				reservationTab.addDestination(destination.getDestination());
+			}
+
+		} catch (EmptyResultDataAccessException e) {
+			System.out.print("No Destinations");
+		}
+		
+	}
+	
+	private Route findByDestination(String destination) {
+		for (Route route : routeStore) {
+			if(route.getDestination().equals(destination))
+					return route;
+		}
+		return null;
+	}	
+	
 
 }

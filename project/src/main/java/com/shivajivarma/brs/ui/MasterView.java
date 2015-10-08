@@ -16,7 +16,7 @@ import com.shivajivarma.brs.utility.constants.Messages;
 public class MasterView{
 	      
 	    private JFrame frame;
-	    MasterController controller = new MasterController(this);
+	    private MasterController controller = new MasterController(this);
 	    
 	    public MasterView(){
 	        frame = new JFrame(Labels.TITLE);

@@ -13,11 +13,5 @@ public interface PassengerDAO {
   //Read
   public Passenger findById(int id) throws EmptyResultDataAccessException;
   public Passenger findByUsername(String username) throws EmptyResultDataAccessException;
-  
-  //Update
- // public void update(Passenger employee);
-  //Delete
- // public void deleteById(int id);
-  //Get All
- // public List<Passenger> getAll();
+
 }

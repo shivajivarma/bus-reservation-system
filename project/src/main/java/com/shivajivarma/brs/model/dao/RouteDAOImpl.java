@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 import com.shivajivarma.brs.model.entity.Route;
 
@@ -33,73 +34,14 @@ public class RouteDAOImpl extends BaseDAO implements RouteDAO {
 		return origins;
 	}
 	
-	public List<String> findAllDestinationsByOrigin(String origin) throws EmptyResultDataAccessException{
-		String query = "SELECT DISTINCT(DESTINATION) FROM ROUTE"+
+	public List<Route> findByOrigin(String origin) throws EmptyResultDataAccessException{
+		String query = "SELECT * FROM ROUTE"+
 						" WHERE ORIGIN = ? AND ID IN (SELECT RID FROM BUS)";
-		List<Map<String, Object>> rows = 
-				getJdbcTemplate().queryForList(query, new Object[]{origin});
 		
-		List<String> destinations = new ArrayList<String>();
-		for (Map<String, Object> row : rows) {
-			destinations.add((String)row.get("DESTINATION"));
-		}
+		List<Route> routes = getJdbcTemplate().query(query,
+				new Object[] { origin },
+				new BeanPropertyRowMapper<Route>(Route.class));
 		
-		return destinations;
+		return routes;
 	}
-	
 }
-	/**
-	 * Following function retrieves collection of origins between where buses are available for transport.
-	 * 
-	 * @return Collect object holding set of origins.
-	 * @throws DBConnectException 
-	 */
-	/*public Collection<Route> findOrigins() throws DBConnectException {
-		Route rb = null;
-		Collection<Route> rbs = new ArrayList<Route>();
-
-		try {
-			DBConnection.openConnection();
-			Statement st = DBConnection.conn.createStatement();
-			ResultSet rs = null;
-			rs = st.executeQuery("SELECT DISTINCT(origin) FROM route r,bus b where r.rid=b.rid");
-			while (rs.next()) {
-				rb = new Route();
-				rb.setOrigin(rs.getString("origin"));
-				rbs.add(rb);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return rbs;
-	}*/
-	
-	/**
-	 * Following function retrieves collection of origins between where buses are available for transport.
-	 * 
-	 * @return Collect object holding set of origins.
-	 * @throws DBConnectException 
-	 */
-	/*public Collection<Route> findDestinations(String origin) throws DBConnectException {
-		Route rb = null;
-		Collection<Route> rbs = new ArrayList<Route>();
-
-		try {
-			DBConnection.openConnection();
-			Statement st = DBConnection.conn.createStatement();
-			ResultSet rs = null;
-			rs = st.executeQuery("SELECT DISTINCT(destination) FROM route r,bus b where r.rid=b.rid AND origin='"+origin+"'");
-			while (rs.next()) {
-				rb = new Route();
-				rb.setDestination(rs.getString("destination"));
-				rbs.add(rb);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return rbs;
-	}*/
-
-

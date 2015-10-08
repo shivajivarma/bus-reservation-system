@@ -5,13 +5,14 @@ import java.util.List;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.dao.EmptyResultDataAccessException;
 
-import com.shivajivarma.brs.model.dao.RouteDAO;
+import com.shivajivarma.brs.model.dao.BusDAO;
+import com.shivajivarma.brs.model.entity.Bus;
 import com.shivajivarma.brs.model.entity.Route;
 
 /**
  * @author: Shivaji Varma (contact@shivajivarma.com)
  */
-public class RouteService implements Service {
+public class BusService implements Service {
 
 	/**
 	 * Session variable which holds account details of the customer until he
@@ -19,22 +20,15 @@ public class RouteService implements Service {
 	 */
 	public static ClassPathXmlApplicationContext dbApplicationContext;
 
-	public RouteService() {
+	public BusService() {
 		dbApplicationContext = new ClassPathXmlApplicationContext("spring-jdbc.xml");
 	}
 
-	public List<String> getOrigins() throws EmptyResultDataAccessException {
+	public List<Bus> findAvailableBuses(Route route,String date) throws EmptyResultDataAccessException {
 
-		RouteDAO routeDAO = dbApplicationContext.getBean("routeDAO",RouteDAO.class);
+		BusDAO busDAO = dbApplicationContext.getBean("busDAO",BusDAO.class);
 
-		return routeDAO.findAllOrigins();
-	}
-	
-	public List<Route> getDestinationsWithRoute(String origin) throws EmptyResultDataAccessException {
-
-		RouteDAO routeDAO = dbApplicationContext.getBean("routeDAO",RouteDAO.class);
-
-		return routeDAO.findByOrigin(origin);
+		return busDAO.findByRouteAndDate(route, date);
 	}
 
 	protected void finalize() {
