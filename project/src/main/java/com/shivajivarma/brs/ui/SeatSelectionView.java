@@ -21,8 +21,8 @@ public class SeatSelectionView extends BaseView implements View{
 	private List<JCheckBox> seats = new ArrayList<JCheckBox>();
 	private List<JLabel> icons = new ArrayList<JLabel>();
 	
-	private static ImageIcon disabledSeat=new ImageIcon(SeatSelectionView.class.getClass().getResource(ResourcePaths.REDSEAT)),
-			availableSeat=new ImageIcon(SeatSelectionView.class.getClass().getResource(ResourcePaths.GREENSEAT));
+	private static ImageIcon disabledSeat = ViewComponentFactory.createImageIcon(ResourcePaths.REDSEAT),
+			availableSeat = ViewComponentFactory.createImageIcon(ResourcePaths.GREENSEAT);
 	private JButton bookButton, backButton;
 	private int i=0,j=1;
 	

@@ -13,9 +13,9 @@ import com.shivajivarma.brs.utility.constants.Labels;
 /**
  * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
  */
+@SuppressWarnings("serial")
 public class BusSelectionView extends BaseView implements View {
 		
-	private static final long serialVersionUID = -8424388738392769666L;
 	private int i=0;
 	private JButton submitButton,backButton;
 	private ButtonGroup buses;
@@ -49,9 +49,11 @@ public class BusSelectionView extends BaseView implements View {
 															arrtime+"       "+
 															depttime+"        "+
 															count+"             Rs. "+fare, new int[]{85,50+i,850,20}));
+			
 			JRadioButton busRadioButton = new JRadioButton();
 			busRadioButton.setActionCommand(String.valueOf(bid));
 			busRadioButton.setBounds(30,50+i,20,20);
+			
 			buses.add(busRadioButton);
 			this.add(busRadioButton);
 			i=i+30;
@@ -72,34 +74,5 @@ public class BusSelectionView extends BaseView implements View {
 		public long getSelectedBusId() {
 			return Long.parseLong(buses.getSelection().getActionCommand());
 		}
-		
-		/*BRSView mainFrame, Collection<Bus> bbs, String date){	
-			/*this.date = date;
-			this.bbs = bbs;
-			
-			ButtonGroup bg=new ButtonGroup();
-			setLayout(null);
-			
-			
-			btnSubmit.addActionListener(new ActionAdapter() {
-				
-				public void actionPerformed(ActionEvent ae) {
-					int k;
-					Iterator<Bus> irbs = self.bbs.iterator();
-					for (k= 0; irbs.hasNext(); k++) {
-						Bus bb = irbs.next();
-						if(jrbSelectBus[k].isSelected()){
-							//mainFrame.seatLayoutPage(PassengerController.session.seatsAvailablity(bb.getBid(),self.date), bb, self.date);
-							self.setVisible(false);
-							break;
-						}
-					}
-	
-					if(k == j){
-						StylesAndHelperMethods.errorMessage("Please select a bus");
-					}
-				}
-				
-			});
-		}*/
+
 }

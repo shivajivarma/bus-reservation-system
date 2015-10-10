@@ -74,6 +74,10 @@ public class ViewComponentFactory {
 		return new JLabel(new ImageIcon(ViewComponentFactory.class.getResource(path)));
 	}
 	
+	public static ImageIcon createImageIcon(String path){
+		return new ImageIcon(ViewComponentFactory.class.getResource(path));
+	}
+	
 	/*
 	 * Buttons
 	 */
