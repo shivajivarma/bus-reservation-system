@@ -23,5 +23,6 @@ public class Labels {
 	public static final String ORIGIN = "Origin";
 	public static final String DESTINATION = "Destination";
 	public static final String BACK = "Back";
+	public static final String BOOK = "Book";
 	
 }

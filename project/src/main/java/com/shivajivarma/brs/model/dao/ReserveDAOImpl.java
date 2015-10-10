@@ -1,5 +1,10 @@
 package com.shivajivarma.brs.model.dao;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
@@ -14,40 +19,35 @@ public class ReserveDAOImpl extends BaseDAO implements ReserveDAO {
 	public ReserveDAOImpl(){
 		this.table = Reserve.indentity;
 	}
-	/*
-	public void save(Reserve reserve){
+	
+	@Override
+	public int save(Reserve reserve){
 		
-		String sql = "INSERT INTO "+table+" VALUES(TID_AUTO.NEXTVAL,?,?,?,?,?)";
-			 
-		getJdbcTemplate().update(sql, 
+		String query = "INSERT INTO "+table+" VALUES(TID_AUTO.NEXTVAL,?,?,?,?,?)";
+		
+		getJdbcTemplate().update(query, 
 				new Object[] { 
 				reserve.getPid(),
 				reserve.getBid(),
 				reserve.getDt(),
 				reserve.getTstamp(),
 				reserve.getSeat()});
-			
-	}*/
-/*	public int create(Reserve rb)  throws  DBConnectException{
-		try {
-			DBConnection.openConnection();
-			PreparedStatement pst = DBConnection.conn.prepareStatement("INSERT INTO reserve VALUES(TID_AUTO.NEXTVAL,?,?,?,?,?)");
-				pst.setLong(1, rb.getPid());
-				pst.setLong(2, rb.getBid());
-				pst.setString(3, rb.getDate());
-				pst.setString(4, new SimpleDateFormat("dd/MMM/yyyy").format(Calendar.getInstance().getTime()));
-				pst.setInt(5, rb.getSeat());
-				pst.executeQuery();
-			
-				return 1;
-		} catch (SQLException sqle) {
-			sqle.printStackTrace();
-		}
-
-		return 0;
-	}*/
+		
+		query = "select max(id) from "+table;
+		
+		return Integer.parseInt(getJdbcTemplate().queryForObject(query, 
+				new Object[] {}, String.class));
+	}
 	
-	 @Override
+	public int findNewId(){
+		String query = "select TID_AUTO.currval from DUAL";
+		
+		return (Integer) getJdbcTemplate().queryForObject(query, 
+        		new BeanPropertyRowMapper<Integer>(Integer.class));
+	}
+
+	
+	@Override
     public Reserve findById(long id) throws EmptyResultDataAccessException{
         String query = "select * from "+table+" where id = ?";
         
@@ -59,52 +59,16 @@ public class ReserveDAOImpl extends BaseDAO implements ReserveDAO {
         return reserve;
     }
 
-	
-	/**
-	 * Following function deletes ticket in Reserve table for given passenger id
-	 * and ticket id
-	 * 
-	 * @param customerid
-	 * @return '1'- if removal of customer is successful, else returns 0.
-	 * @throws DBConnectException
-	 * @throws EmptyResultSetException.
-	 * 
-	 */
-	/*public int remove(Reserve rb) throws EmptyResultSetException, DBConnectException {
-		try {
-			DBConnection.openConnection();
-			Statement st = DBConnection.conn.createStatement();
-			int noOfRowsDeleted = st
-					.executeUpdate("DELETE FROM reserve WHERE tid="
-							+ rb.getTid() + " and pid=" + rb.getPid());
-			if (noOfRowsDeleted == 0)
-				throw new EmptyResultSetException();
-			else
-				return 1;
-		} catch (SQLException e) {
-			throw new DBConnectException("Unable to connect to database");
-		}
-	}
-	
-	public Collection<Integer> findSeatsAvailablity(long bid,String date) throws  DBConnectException {
-		
-		Collection<Integer> occupiedSeats = new ArrayList<Integer>();
-		try {
-			DBConnection.openConnection();
-			PreparedStatement pst = DBConnection.conn.prepareStatement("SELECT seat FROM reserve WHERE bid=? and dt=?");
-			pst.setLong(1, bid);
-			pst.setString(2, date);
+	@Override
+	public List<Integer> getSeatNumbersByBusAndDate(long bid, String date) throws EmptyResultDataAccessException{
+		String query = "select SEAT from RESERVE where bid=? and dt=?";
 			
-			ResultSet rs = pst.executeQuery(); 
-
-			while (rs.next()) {		
-				occupiedSeats.add(rs.getInt("SEAT"));
-			} 
-	
-		} catch (SQLException sqle) {
-			sqle.printStackTrace();
+	 	List<Integer> seatNumbers = new ArrayList<Integer>();
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(query,new Object[] {bid,date});
+		for (Map<String, Object> row : rows) {
+			seatNumbers.add(((BigDecimal) row.get("SEAT")).intValue());
 		}
-		return occupiedSeats;
-	}
-*/
+			
+		return seatNumbers;
+	 }
 }

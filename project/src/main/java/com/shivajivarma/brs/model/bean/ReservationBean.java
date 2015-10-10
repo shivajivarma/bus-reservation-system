@@ -39,6 +39,15 @@ public class ReservationBean extends Reserve implements Bean {
 		this.depttime = depttime;
 		this.arrtime = arrtime;
 	}
+	
+	public ReservationBean(Reserve reserve){
+		this.id = reserve.getId();
+		this.pid = reserve.getPid();
+		this.bid = reserve.getBid();
+		this.dt = reserve.getDt();
+		this.tstamp = reserve.getTstamp();
+		this.seat = reserve.getSeat();
+	}
 
 	public long getId() {
 		return id;

@@ -1,5 +1,7 @@
 package com.shivajivarma.brs.model.dao;
 
+import java.util.List;
+
 import org.springframework.dao.EmptyResultDataAccessException;
 
 import com.shivajivarma.brs.model.entity.Reserve;
@@ -8,17 +10,15 @@ import com.shivajivarma.brs.model.entity.Reserve;
 public interface ReserveDAO {
    
   //Create
- // public void save(Reserve reserve);
+  public int save(Reserve reserve);
   
   //Read
+  public int findNewId();
   public Reserve findById(long id) throws EmptyResultDataAccessException;
-  //public Reserve findByUsername(String username) throws EmptyResultDataAccessException;
   
-  //Update
- // public void update(Passenger employee);
   //Delete
   public void deleteById(long id);
   
   //Get All
- // public List<Passenger> getAll();
+  public List<Integer> getSeatNumbersByBusAndDate(long bid, String date) throws EmptyResultDataAccessException;
 }

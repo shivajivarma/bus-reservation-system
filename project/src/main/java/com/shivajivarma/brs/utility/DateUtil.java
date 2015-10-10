@@ -29,4 +29,8 @@ public class DateUtil {
 	public static final String currentDate(){
 		return new SimpleDateFormat("dd/MMM/yyyy").format(Calendar.getInstance().getTime());
 	}
+	
+	public static final String getTimeStamp(){
+		return new SimpleDateFormat("dd/MMM/yyyy").format(Calendar.getInstance().getTime());
+	}
 }

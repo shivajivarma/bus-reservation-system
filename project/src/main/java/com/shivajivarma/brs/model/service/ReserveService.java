@@ -51,6 +51,14 @@ public class ReserveService implements Service{
 		return reservationList;
 	}
 	
+	public List<Integer> getOccupiedSeatNumbers(long bid, String date) throws EmptyResultDataAccessException{
+		
+		ReserveDAO reserveDAO = dbApplicationContext.getBean("reserveDAO", ReserveDAO.class);
+		
+		List<Integer> occupiedSeatNumbers = reserveDAO.getSeatNumbersByBusAndDate(bid, date);
+		return occupiedSeatNumbers;
+	}
+	
 	public void printTickets(List<ReservationBean> tickets) {
 		String html = IOHelpers.getFileAsString("/html/ticket-head.html");
 		
@@ -90,48 +98,16 @@ public class ReserveService implements Service{
 		return card;
 	}
 	
-	/*public Collection<BusBean> availableBuses(String origin, String destination, String date){
-		BusDAO bd = new BusDAO();
+	public int reserve(Reserve reserve){
+
+		ReserveDAO reserveDAO = dbApplicationContext.getBean("reserveDAO", ReserveDAO.class);
 		
-		Collection<BusBean> bbs = null;
-		try {
-			bbs = bd.find(origin, destination, date);
-		} catch (DBConnectException e) {
-			e.printStackTrace();
-		}
-		return bbs;
+		 return reserveDAO.save(reserve);
 	}
-	
-	public Collection<Integer> seatsAvailablity(long bid, String date){
-		ReserveDAOImpl rd = new ReserveDAOImpl();
-		
-		Collection<Integer> occupiedSeats = null;
-		try {
-			occupiedSeats = rd.findSeatsAvailablity(bid, date);
-		} catch (DBConnectException e) {
-			e.printStackTrace();
-		}
-		return occupiedSeats;
-	}
-	
-	
-	public boolean reserve(Reserve rb){
-		ReserveDAOImpl rd = new ReserveDAOImpl();
-		
-		try{
-			rd.create(rb);
-			return true;
-		}catch (DBConnectException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-	*/
 	
 	 protected void finalize(){
 		dbApplicationContext.close();
 		dbApplicationContext = null;
 	 }
-
 	
 }

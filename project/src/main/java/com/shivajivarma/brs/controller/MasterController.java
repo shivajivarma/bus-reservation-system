@@ -1,6 +1,7 @@
 package com.shivajivarma.brs.controller;
 
 import com.shivajivarma.brs.model.Model;
+import com.shivajivarma.brs.model.entity.Bus;
 import com.shivajivarma.brs.model.entity.Passenger;
 import com.shivajivarma.brs.model.service.PassengerService;
 import com.shivajivarma.brs.model.service.Service;
@@ -10,6 +11,7 @@ import com.shivajivarma.brs.ui.HomeTabsPanelView;
 import com.shivajivarma.brs.ui.LoginPanelView;
 import com.shivajivarma.brs.ui.MasterView;
 import com.shivajivarma.brs.ui.RegistrationPanelView;
+import com.shivajivarma.brs.ui.SeatSelectionView;
 import com.shivajivarma.brs.ui.View;
 
 /**
@@ -86,14 +88,14 @@ public class MasterController implements Controller{
     	busSelectionController.control(this);   	
     }
     
-    public void seatSelectionControl(){
-    	View busSelection = new BusSelectionView();
+    public void seatSelectionControl(Model route, String date, Bus bus){
+    	View seatSelection = new SeatSelectionView();
     	
     	masterView.clear();
-    	masterView.insertPanel(busSelection, "center");
+    	masterView.insertPanel(seatSelection, "center");
     	
-    	// busSelectionController = new BusSelectionController(busSelection,route, date);
-    	//busSelectionController.control(this);   	
+    	SeatSelectionController seatSelectionController = new SeatSelectionController(seatSelection, route, date, bus);
+    	seatSelectionController.control(this);   	
     }
     
     public Service getPassengerService() {

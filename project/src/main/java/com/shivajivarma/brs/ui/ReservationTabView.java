@@ -83,8 +83,16 @@ public class ReservationTabView extends BaseView implements View{
 		return month.getSelectedIndex();
 	}
 	
+	public String getSelectedMonth() {
+		return month.getSelectedItem().toString();
+	}
+	
 	public int getDateSelectedIndex() {
 		return date.getSelectedIndex();
+	}
+	
+	public int getSelectedDate() {
+		return Integer.parseInt(date.getSelectedItem().toString());
 	}
 	
 	public int getYearSeleted() {

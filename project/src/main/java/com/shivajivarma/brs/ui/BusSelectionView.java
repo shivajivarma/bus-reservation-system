@@ -54,6 +54,7 @@ public class BusSelectionView extends BaseView implements View {
 															depttime+"        "+
 															count+"             Rs. "+fare, new int[]{85,50+i,850,20}));
 			JRadioButton busRadioButton = new JRadioButton();
+			busRadioButton.setActionCommand(String.valueOf(bid));
 			busRadioButton.setBounds(30,50+i,20,20);
 			buses.add(busRadioButton);
 			this.add(busRadioButton);
@@ -70,6 +71,10 @@ public class BusSelectionView extends BaseView implements View {
 
 		public boolean validateFields() {
 			return buses.getSelection() != null;
+		}
+		
+		public long getSelectedBusId() {
+			return Long.parseLong(buses.getSelection().getActionCommand());
 		}
 		
 		/*BRSView mainFrame, Collection<Bus> bbs, String date){	

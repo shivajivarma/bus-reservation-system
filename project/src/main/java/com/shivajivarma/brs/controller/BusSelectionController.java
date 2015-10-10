@@ -23,10 +23,12 @@ public class BusSelectionController implements Controller{
 	private BusService busService;
 	private Route route;
 	private String date;
+	private List<Bus> buses;
 	
 	
     public BusSelectionController(View busSelectionView, Model route, String date) {
     	_this = this;
+    	
     	this.busSelectionView = (BusSelectionView) busSelectionView;
     	this.route = (Route) route;
     	this.date = date;
@@ -46,7 +48,7 @@ public class BusSelectionController implements Controller{
     	busSelectionView.getSubmitButton().addActionListener(new ActionAdapter() {
 			public void actionPerformed(ActionEvent ae) {
 				if(busSelectionView.validateFields()){
-					masterController.seatSelectionControl();
+					masterController.seatSelectionControl(route, date, _this.searchBus(busSelectionView.getSelectedBusId()));
 				}
 			}
 		});
@@ -59,7 +61,7 @@ public class BusSelectionController implements Controller{
 		}
 		
 		try {
-			List<Bus> buses = busService.findAvailableBuses(route, date);
+			buses = busService.findAvailableBuses(route, date);
 			for (Bus bus : buses) {
 				busSelectionView.addBus(bus.getId(), route.getOrigin(), route.getDestination(), bus.isAc()?"AC":"Non - AC", bus.getArrtime(), bus.getDeptime(), bus.getAvailablityCount(), bus.getFare());
 			}
@@ -69,5 +71,14 @@ public class BusSelectionController implements Controller{
 		}
 		
 	}
+    
+    private Bus searchBus(long bid){
+    	for (Bus bus : buses) {
+			if(bus.getId() == bid){
+				return bus;
+			}
+		}
+    	return null;
+    }
     
 }

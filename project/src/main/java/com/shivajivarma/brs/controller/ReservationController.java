@@ -35,27 +35,25 @@ public class ReservationController implements Controller {
 		reservationTab.getSubmitButton().addActionListener(new ActionAdapter() {
 			
 			public void actionPerformed(ActionEvent ae) {
-					if(reservationTab.getMonthSelectedIndex() == 0){
-						Alert.errorMessage("Select month.");
-					}
-					else if(reservationTab.getYearSeleted() > DateUtil.currentYear()
-							|| reservationTab.getMonthSelectedIndex() > DateUtil.currentMonth() 
-							|| (reservationTab.getMonthSelectedIndex() == DateUtil.currentMonth() && reservationTab.getDateSelectedIndex() >= DateUtil.currentDay())){	
-						
-						String date = reservationTab.getDateSelectedIndex() + "-" 
-										+ reservationTab.getMonthSelectedIndex() + "-" 
-											+reservationTab.getYearSeleted();
-						
-						Route route = findByDestination(reservationTab.getDestination());
-						
-						((HomeTabsMediator) parentController).getMasterController().busSelectionControl(route,date);
-						
-						//mainFrame.availableBusesPage(PassengerService.dbApplicationContext.availableBuses(cbOrigin.getSelectedItem().toString(), cbDestination.getSelectedItem().toString(),date), date);
-					}
-					else {
-						Alert.errorMessage("Select a future date.");
-					}
-			
+				if(reservationTab.getMonthSelectedIndex() == 0){
+					Alert.errorMessage("Select month.");
+				}
+				else if(reservationTab.getYearSeleted() > DateUtil.currentYear()
+						|| reservationTab.getMonthSelectedIndex() > DateUtil.currentMonth() 
+						|| (reservationTab.getMonthSelectedIndex() == DateUtil.currentMonth() && reservationTab.getDateSelectedIndex() >= DateUtil.currentDay())){	
+					
+					String date = reservationTab.getSelectedDate() + "-" 
+									+ reservationTab.getSelectedMonth() + "-" 
+										+reservationTab.getYearSeleted();
+					
+					Route route = findByDestination(reservationTab.getDestination());
+					
+					((HomeTabsMediator) parentController).getMasterController().busSelectionControl(route,date);
+					
+				}
+				else {
+					Alert.errorMessage("Select a future date.");
+				}
 			}
 
 		});
