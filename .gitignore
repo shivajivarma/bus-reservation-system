@@ -4,6 +4,7 @@ ehthumbs.db
 Icon?
 Thumbs.db
 bin/
-docs/
+doc/
 apidocs/
 *.class
+.metadata/
