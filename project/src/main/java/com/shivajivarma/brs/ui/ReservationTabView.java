@@ -11,14 +11,14 @@ import com.shivajivarma.brs.utility.ViewComponentFactory;
 import com.shivajivarma.brs.utility.constants.Labels;
 
 /**
- * @author: Shivaji Varma (contact@shivajivarma.com)
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
  */
 @SuppressWarnings("serial")
 public class ReservationTabView extends BaseView implements View{
+	
 	private JButton submitButton;
 	private JComboBox<String> origin, destination, month;
 	private JComboBox<Integer> date, year;
-	
 	private int x=200,y=40;
 	
 	public ReservationTabView(){

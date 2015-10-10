@@ -8,7 +8,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import com.shivajivarma.brs.model.bean.ReservationBean;
 
 /**
- * @author: Shivaji Varma (contact@shivajivarma.com)
+ * CRUD operations for reservation view.
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
  */
 public class ReservationDAOImpl extends BaseDAO implements ReservationDAO {
 		
@@ -17,13 +18,13 @@ public class ReservationDAOImpl extends BaseDAO implements ReservationDAO {
 		this.table = ReservationBean.indentity;
 	}
 	
-	public List<ReservationBean> findByPid(long pid) throws EmptyResultDataAccessException{
+	public List<ReservationBean> findByPid(long passengerID) throws EmptyResultDataAccessException{
 		
-		String query = "select * from "+table+" where pid = ?";
+		String query = "select * from "+table+" where passengerid = ?";
 		
 		List<ReservationBean> reservationBeans = 
 				getJdbcTemplate().query(query, 
-		        		new Object[] { pid }, 
+		        		new Object[] { passengerID }, 
 						new BeanPropertyRowMapper<ReservationBean>(ReservationBean.class));
 		return reservationBeans;
 	}

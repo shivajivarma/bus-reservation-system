@@ -3,6 +3,6 @@ package com.shivajivarma.brs.model.bean;
 import com.shivajivarma.brs.model.Model;
 
 /**
- * @author: Shivaji Varma (contact@shivajivarma.com)
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
  */
 public interface Bean extends Model{}

@@ -5,6 +5,9 @@ import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
+/**
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
+ */
 public class StylesAndHelperMethods {
 	
 	/* Display position */

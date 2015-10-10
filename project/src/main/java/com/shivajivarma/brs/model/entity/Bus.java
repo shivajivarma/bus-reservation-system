@@ -10,13 +10,13 @@ package com.shivajivarma.brs.model.entity;
 public class Bus implements Entity {
 
 	public static final String indentity = "Bus";
-	
+
 	private long id;
-	private long route_id;
+	private long routeID;
 	private boolean ac;
 	private int fare;
-	private String deptime;
-	private String arrtime;
+	private String departureTime;
+	private String arrivalTime;
 	private int availablityCount;
 
 	public long getId() {
@@ -27,12 +27,12 @@ public class Bus implements Entity {
 		this.id = id;
 	}
 
-	public long getRoute_id() {
-		return route_id;
+	public long getRouteID() {
+		return routeID;
 	}
 
-	public void setRoute_id(long route_id) {
-		this.route_id = route_id;
+	public void setRouteID(long routeID) {
+		this.routeID = routeID;
 	}
 
 	public boolean isAc() {
@@ -51,20 +51,20 @@ public class Bus implements Entity {
 		this.fare = fare;
 	}
 
-	public String getDeptime() {
-		return deptime;
+	public String getDepartureTime() {
+		return departureTime;
 	}
 
-	public void setDeptime(String deptime) {
-		this.deptime = deptime;
+	public void setDepartureTime(String departureTime) {
+		this.departureTime = departureTime;
 	}
 
-	public String getArrtime() {
-		return arrtime;
+	public String getArrivalTime() {
+		return arrivalTime;
 	}
 
-	public void setArrtime(String arrtime) {
-		this.arrtime = arrtime;
+	public void setArrivalTime(String arrivalTime) {
+		this.arrivalTime = arrivalTime;
 	}
 
 	public int getAvailablityCount() {

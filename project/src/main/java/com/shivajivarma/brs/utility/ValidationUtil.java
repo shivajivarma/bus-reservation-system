@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 import javax.swing.JTextField;
 
 /**
- * @author: Shivaji Varma (contact@shivajivarma.com)
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
  */
 public class ValidationUtil {
 	

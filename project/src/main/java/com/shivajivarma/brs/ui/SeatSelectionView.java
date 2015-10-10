@@ -10,21 +10,23 @@ import javax.swing.JLabel;
 
 import com.shivajivarma.brs.utility.ViewComponentFactory;
 import com.shivajivarma.brs.utility.constants.Labels;
+import com.shivajivarma.brs.utility.constants.ResourcePaths;
 
+/**
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
+ */
 @SuppressWarnings("serial")
 public class SeatSelectionView extends BaseView implements View{
 
-	//BRSView mainFrame;
-	//private JLabel seats[]=new JLabel[41];
 	private List<JCheckBox> seats = new ArrayList<JCheckBox>();
 	private List<JLabel> icons = new ArrayList<JLabel>();
 	
-	private static ImageIcon disabledSeat=new ImageIcon(SeatSelectionView.class.getClass().getResource("/images/redSeat.jpg")),
-			availableSeat=new ImageIcon(SeatSelectionView.class.getClass().getResource("/images/greenSeat.jpg"));
+	private static ImageIcon disabledSeat=new ImageIcon(SeatSelectionView.class.getClass().getResource(ResourcePaths.REDSEAT)),
+			availableSeat=new ImageIcon(SeatSelectionView.class.getClass().getResource(ResourcePaths.GREENSEAT));
 	private JButton bookButton, backButton;
 	private int i=0,j=1;
 	
-	public SeatSelectionView(/*BRSView mainFrame, Collection<Integer> occupiedSeats, Bus bb, String date*/){
+	public SeatSelectionView(){
 		this.initializeComponents();
 	}
 	
@@ -73,13 +75,8 @@ public class SeatSelectionView extends BaseView implements View{
 	}
 	
 	public void disableSeat(int seatNumber){
-		seats.get(seatNumber).setEnabled(false);
-		icons.get(seatNumber).setIcon(disabledSeat);
-	}
-
-	public boolean validateFields() {
-		// TODO Auto-generated method stub
-		return true;
+		seats.get(seatNumber-1).setEnabled(false);
+		icons.get(seatNumber-1).setIcon(disabledSeat);
 	}
 
 	public List<JCheckBox> getSeats() {

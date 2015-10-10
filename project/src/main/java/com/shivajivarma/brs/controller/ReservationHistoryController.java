@@ -63,12 +63,12 @@ public class ReservationHistoryController implements Controller {
 			for (ReservationBean reservationBean : reservationsList) {
 				historyTab
 						.addTableRow(String.valueOf(reservationBean.getId()),
-								String.valueOf(reservationBean.getBid()),
+								String.valueOf(reservationBean.getBusID()),
 								reservationBean.getDt(),
 								reservationBean.getOrigin(),
 								reservationBean.getDestination(),
-								reservationBean.getDepttime(),
-								reservationBean.getArrtime(),
+								reservationBean.getDeparturetime(),
+								reservationBean.getArrivaltime(),
 								String.valueOf(reservationBean.getSeat()));
 			}
 

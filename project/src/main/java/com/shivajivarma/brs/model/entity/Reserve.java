@@ -10,27 +10,32 @@ public class Reserve implements Entity {
 
 	public static final String indentity = "Reserve";
 
-	protected long id;
-	protected long passenger_id;
-	protected long bus_id;
-	protected String dt;
-	protected String tstamp;
-	protected int seat;
+	private long id;
+	private long passengerID;
+	private long busID;
+	private String dt;
+	private String tstamp;
+	private int seat;
 
 	public Reserve() {
 	}
 
-	public Reserve(long id, long pid, long bid, String dt, String tstamp,
+	public Reserve(long id, long passengerID, long busID, String dt, String tstamp,
 			int seat) {
 		this.id = id;
-		this.passenger_id = pid;
-		this.bus_id = bid;
+		this.passengerID = passengerID;
+		this.busID = busID;
 		this.dt = dt;
 		this.tstamp = tstamp;
 		this.seat = seat;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Reserve::[ID=" + id + ",PID=" + passengerID + ",BID=" + busID
+				+ ",Date=" + dt + ",Time Stamp=" + tstamp + ",Seat=" + seat
+				+ "]";
+	}
 
 	public long getId() {
 		return id;
@@ -40,20 +45,20 @@ public class Reserve implements Entity {
 		this.id = id;
 	}
 
-	public long getPassenger_id() {
-		return passenger_id;
+	public long getPassengerID() {
+		return passengerID;
 	}
 
-	public void setPassenger_id(long passenger_id) {
-		this.passenger_id = passenger_id;
+	public void setPassengerID(long passengerID) {
+		this.passengerID = passengerID;
 	}
 
-	public long getBus_id() {
-		return bus_id;
+	public long getBusID() {
+		return busID;
 	}
 
-	public void setBus_id(long bus_id) {
-		this.bus_id = bus_id;
+	public void setBusID(long busID) {
+		this.busID = busID;
 	}
 
 	public String getDt() {
@@ -78,13 +83,6 @@ public class Reserve implements Entity {
 
 	public void setSeat(int seat) {
 		this.seat = seat;
-	}
-
-	@Override
-	public String toString() {
-		return "Reserve::[ID=" + id + ",PID=" + passenger_id + ",BID=" + bus_id
-				+ ",Date=" + dt + ",Time Stamp=" + tstamp + ",Seat=" + seat
-				+ "]";
 	}
 
 }

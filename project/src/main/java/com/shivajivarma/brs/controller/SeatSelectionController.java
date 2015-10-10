@@ -15,9 +15,11 @@ import com.shivajivarma.brs.model.entity.Reserve;
 import com.shivajivarma.brs.model.entity.Route;
 import com.shivajivarma.brs.model.service.PassengerService;
 import com.shivajivarma.brs.model.service.ReserveService;
+import com.shivajivarma.brs.ui.Alert;
 import com.shivajivarma.brs.ui.SeatSelectionView;
 import com.shivajivarma.brs.ui.View;
 import com.shivajivarma.brs.utility.DateUtil;
+import com.shivajivarma.brs.utility.constants.Messages;
 
 /**
  * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
@@ -58,14 +60,16 @@ public class SeatSelectionController implements Controller{
     	
     	seatSelectionView.getBookButton().addActionListener(new ActionAdapter() {
 			public void actionPerformed(ActionEvent ae) {
-				if(seatSelectionView.validateFields()){
-					for (JCheckBox seat : seatSelectionView.getSeats()) {
-						if(seat.isSelected()){
-							_this.reserve(Integer.parseInt(seat.getActionCommand()));
-						}
+				for (JCheckBox seat : seatSelectionView.getSeats()) {
+					if(seat.isSelected()){
+						_this.reserve(Integer.parseInt(seat.getActionCommand()));
 					}
+				}
+				if(!tickets.isEmpty()){
 					reserveService.printTickets(tickets);
 					masterController.applicationControl();
+				}else{
+					Alert.successMessage(Messages.NO_SEAT_SELECTED);
 				}
 			}
 		});
@@ -94,8 +98,8 @@ public class SeatSelectionController implements Controller{
     	}
 		try{
 			Reserve reserve = new Reserve();
-			reserve.setPassengerId(pid);
-			reserve.setBid(bus.getId());
+			reserve.setPassengerID(pid);
+			reserve.setBusID(bus.getId());
 			reserve.setDt(date);
 			reserve.setTstamp(DateUtil.getTimeStamp());
 			reserve.setSeat(seatNumber);
@@ -106,8 +110,8 @@ public class SeatSelectionController implements Controller{
 			ReservationBean reservationBean = new ReservationBean(reserve);
 			reservationBean.setOrigin(route.getOrigin());
 			reservationBean.setDestination(route.getDestination());
-			reservationBean.setArrtime(bus.getArrtime());
-			reservationBean.setDepttime(bus.getDeptime());
+			reservationBean.setArrivaltime(bus.getArrivalTime());
+			reservationBean.setDeparturetime(bus.getDepartureTime());
 			
 			tickets.add(reservationBean);
 		} catch (EmptyResultDataAccessException e) {

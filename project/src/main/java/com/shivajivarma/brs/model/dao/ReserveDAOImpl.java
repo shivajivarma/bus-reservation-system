@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import com.shivajivarma.brs.model.entity.Reserve;
 
 /**
- * @author: Shivaji Varma (contact@shivajivarma.com)
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
  */
 public class ReserveDAOImpl extends BaseDAO implements ReserveDAO {
 		
@@ -27,8 +27,8 @@ public class ReserveDAOImpl extends BaseDAO implements ReserveDAO {
 		
 		getJdbcTemplate().update(query, 
 				new Object[] { 
-				reserve.getPassengerId(),
-				reserve.getBid(),
+				reserve.getPassengerID(),
+				reserve.getBusID(),
 				reserve.getDt(),
 				reserve.getTstamp(),
 				reserve.getSeat()});
@@ -60,11 +60,11 @@ public class ReserveDAOImpl extends BaseDAO implements ReserveDAO {
     }
 
 	@Override
-	public List<Integer> getSeatNumbersByBusAndDate(long bid, String date) throws EmptyResultDataAccessException{
-		String query = "select SEAT from RESERVE where bid=? and dt=?";
+	public List<Integer> getSeatNumbersByBusAndDate(long busid, String date) throws EmptyResultDataAccessException{
+		String query = "select SEAT from RESERVE where busid=? and dt=?";
 			
 	 	List<Integer> seatNumbers = new ArrayList<Integer>();
-		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(query,new Object[] {bid,date});
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(query,new Object[] {busid,date});
 		for (Map<String, Object> row : rows) {
 			seatNumbers.add(((BigDecimal) row.get("SEAT")).intValue());
 		}

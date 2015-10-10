@@ -101,7 +101,8 @@ public class ReservationController implements Controller {
 				reservationTab.addOrigin(origin);
 			}
 			
-			this.populateDestinations(origins.get(0));
+			if(!origins.isEmpty())
+				this.populateDestinations(origins.get(0));
 
 		} catch (EmptyResultDataAccessException e) {
 			System.out.print("No Origins");

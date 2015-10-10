@@ -1,4 +1,3 @@
-
 package com.shivajivarma.brs.model.entity;
 
 /**
@@ -27,6 +26,13 @@ public class Passenger implements Entity{
 		this.name = name;
 		this.email = email;
 		this.mobile = mobile;
+	}
+	
+	@Override
+	public String toString() {
+		return "Passenger::[ID=" + id + ",Name=" + name + ",Username=" + username
+				+ ",Password=" + password + ",Name=" + name + ",Email=" + email
+				+ ",Mobile=" + mobile + "]";
 	}
 
 	public long getId() {
@@ -75,13 +81,6 @@ public class Passenger implements Entity{
 
 	public void setMobile(long mobile) {
 		this.mobile = mobile;
-	}
-
-	@Override
-	public String toString() {
-		return "Passenger::[ID=" + id + ",Name=" + name + ",Username=" + username
-				+ ",Password=" + password + ",Name=" + name + ",Email=" + email
-				+ ",Mobile=" + mobile + "]";
 	}
 
 }

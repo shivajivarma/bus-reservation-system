@@ -30,8 +30,8 @@ public class MasterController implements Controller{
       
     public void control(Controller parentController){
     	this.bannerView = new BannerViewPanel();
-    	this.loginControl();
-    	//this.autoLoginControl();
+    	//this.loginControl();
+    	this.autoLoginControl();
     }
     
     public void loginControl(){

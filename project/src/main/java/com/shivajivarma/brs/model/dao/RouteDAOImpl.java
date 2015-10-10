@@ -10,9 +10,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import com.shivajivarma.brs.model.entity.Route;
 
 /**
- * Following class tries to access and modify AccountDetails table in database.
- * 
- * @version 1.0
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
  */
 public class RouteDAOImpl extends BaseDAO implements RouteDAO {
 	
@@ -21,7 +19,7 @@ public class RouteDAOImpl extends BaseDAO implements RouteDAO {
 	}
 
 	public List<String> findAllOrigins() throws EmptyResultDataAccessException{
-		String query = "SELECT DISTINCT(ORIGIN) FROM ROUTE WHERE ID IN (SELECT RID FROM BUS)";
+		String query = "SELECT DISTINCT(ORIGIN) FROM ROUTE WHERE ID IN (SELECT ROUTEID FROM BUS)";
 		
 		List<Map<String, Object>> rows = 
 				getJdbcTemplate().queryForList(query);
@@ -36,7 +34,7 @@ public class RouteDAOImpl extends BaseDAO implements RouteDAO {
 	
 	public List<Route> findByOrigin(String origin) throws EmptyResultDataAccessException{
 		String query = "SELECT * FROM ROUTE"+
-						" WHERE ORIGIN = ? AND ID IN (SELECT RID FROM BUS)";
+						" WHERE ORIGIN = ? AND ID IN (SELECT ROUTEID FROM BUS)";
 		
 		List<Route> routes = getJdbcTemplate().query(query,
 				new Object[] { origin },

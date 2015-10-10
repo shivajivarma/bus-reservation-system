@@ -27,9 +27,7 @@ import com.shivajivarma.brs.utility.ViewComponentFactory;
 import com.shivajivarma.brs.utility.constants.Labels;
 
 /**
- * This class is a login panel which holds buttons and labels of login form.
- * 
- * Contains method to handle login event. 
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
  */
 @SuppressWarnings("serial")
 public class LoginPanelView extends BaseView implements View{

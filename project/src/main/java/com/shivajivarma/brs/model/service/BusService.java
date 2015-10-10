@@ -10,14 +10,10 @@ import com.shivajivarma.brs.model.entity.Bus;
 import com.shivajivarma.brs.model.entity.Route;
 
 /**
- * @author: Shivaji Varma (contact@shivajivarma.com)
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
  */
 public class BusService implements Service {
 
-	/**
-	 * Session variable which holds account details of the customer until he
-	 * logout.
-	 */
 	public static ClassPathXmlApplicationContext dbApplicationContext;
 
 	public BusService() {

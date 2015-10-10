@@ -12,7 +12,7 @@ import com.shivajivarma.brs.model.entity.Reserve;
 import com.shivajivarma.brs.utility.IOHelpers;
 
 /**
- * @author: Shivaji Varma (contact@shivajivarma.com)
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
  */
 public class ReserveService implements Service{
 	
@@ -34,7 +34,7 @@ public class ReserveService implements Service{
 		ReserveDAO reserveDAO = dbApplicationContext.getBean("reserveDAO", ReserveDAO.class);
 		
 		Reserve dbRecord = reserveDAO.findById(reserve.getId());
-		if(dbRecord.getPassengerId() == reserve.getPassengerId()){
+		if(dbRecord.getPassengerID() == reserve.getPassengerID()){
 			reserveDAO.deleteById(reserve.getId());
 			return true;
 		}else{
@@ -79,11 +79,11 @@ public class ReserveService implements Service{
 				  "</div>"+
 				  "<div class='card-block row'>"+
 					"<div class='col-md-6'>"+
-						"<p class='card-text'><b>Passenger id :</b> "+reservationBean.getPassengerId()+"</p>"+
-						"<p class='card-text'><b>Bus no. :</b> "+reservationBean.getBid()+"</p>"+
+						"<p class='card-text'><b>Passenger id :</b> "+reservationBean.getPassengerID()+"</p>"+
+						"<p class='card-text'><b>Bus no. :</b> "+reservationBean.getBusID()+"</p>"+
 						"<p class='card-text'><b>Seat no. :</b> "+reservationBean.getSeat()+"</p>"+
-						"<p class='card-text'><b>Depature Time. :</b> "+reservationBean.getDepttime()+"</p>"+
-						"<p class='card-text'><b>Arrival Time. :</b> "+reservationBean.getArrtime()+"</p>"+
+						"<p class='card-text'><b>Depature Time. :</b> "+reservationBean.getDeparturetime()+"</p>"+
+						"<p class='card-text'><b>Arrival Time. :</b> "+reservationBean.getArrivaltime()+"</p>"+
 					"</div>"+
 					"<div class='col-md-6'>"+
 						"<p class='card-text'><b>From :</b> "+reservationBean.getOrigin()+"</p>"+

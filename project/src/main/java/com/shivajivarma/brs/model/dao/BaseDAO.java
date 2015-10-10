@@ -2,6 +2,9 @@ package com.shivajivarma.brs.model.dao;
 
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
+/**
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
+ */
 public abstract class BaseDAO extends JdbcDaoSupport{
 	
 	public String table;

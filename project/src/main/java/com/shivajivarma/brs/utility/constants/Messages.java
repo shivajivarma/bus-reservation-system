@@ -1,6 +1,7 @@
 package com.shivajivarma.brs.utility.constants;
+
 /**
- * @author: Shivaji Varma (contact@shivajivarma.com)
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
  */
 public class Messages {
 	public static final String ERROR_LOOK_AND_FIELD = "Application Look and Feel settings are not supported in this environment";
@@ -12,4 +13,5 @@ public class Messages {
 	public static final String UNKNOWN_TICKET_NO = "Unknown ticket no.";
 	public static final String NO_ACCESS_TO_CANCEL = "You don't have access to cancel.";
 	public static final String CANCEL_SUCCESS = "Cancellation successful";
+	public static final String NO_SEAT_SELECTED = "Please select a seat to reserve.";
 }

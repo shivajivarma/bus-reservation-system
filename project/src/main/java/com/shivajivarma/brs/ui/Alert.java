@@ -3,7 +3,7 @@ package com.shivajivarma.brs.ui;
 import javax.swing.JOptionPane;
 
 /**
- * @author: Shivaji Varma (contact@shivajivarma.com)
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
  */
 public class Alert {
 	public static final void errorMessage(String mesg){

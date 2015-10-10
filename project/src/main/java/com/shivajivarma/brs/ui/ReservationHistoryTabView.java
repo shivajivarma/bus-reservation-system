@@ -17,7 +17,6 @@ import com.shivajivarma.brs.utility.constants.Labels;
 public class ReservationHistoryTabView extends BaseView implements View{
 	
 	private DefaultTableModel tableModel;
-	
 	private JButton printButton;
 	private JTable table;
 	

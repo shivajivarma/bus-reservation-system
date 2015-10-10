@@ -63,7 +63,7 @@ public class BusSelectionController implements Controller{
 		try {
 			buses = busService.findAvailableBuses(route, date);
 			for (Bus bus : buses) {
-				busSelectionView.addBus(bus.getId(), route.getOrigin(), route.getDestination(), bus.isAc()?"AC":"Non - AC", bus.getArrtime(), bus.getDeptime(), bus.getAvailablityCount(), bus.getFare());
+				busSelectionView.addBus(bus.getId(), route.getOrigin(), route.getDestination(), bus.isAc()?"AC":"Non - AC", bus.getArrivalTime(), bus.getDepartureTime(), bus.getAvailablityCount(), bus.getFare());
 			}
 
 		} catch (EmptyResultDataAccessException e) {

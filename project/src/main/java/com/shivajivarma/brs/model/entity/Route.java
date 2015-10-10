@@ -22,6 +22,12 @@ public class Route implements Entity {
 		this.destination = destination;
 	}
 
+	@Override
+	public String toString() {
+		return "Route::[ID=" + id + ",ORIGIN=" + origin + ",DESTINATION="
+				+ destination + "]";
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -44,11 +50,5 @@ public class Route implements Entity {
 
 	public void setDestination(String destination) {
 		this.destination = destination;
-	}
-
-	@Override
-	public String toString() {
-		return "Route::[ID=" + id + ",ORIGIN=" + origin + ",DESTINATION="
-				+ destination + "]";
 	}
 }

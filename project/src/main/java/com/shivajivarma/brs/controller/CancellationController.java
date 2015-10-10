@@ -30,7 +30,7 @@ public class CancellationController implements Controller{
     
     public void control(Controller parentController){
     	
-    	reserve.setPassengerId(((HomeTabsMediator)parentController).getPassengerService().getModel().getId());
+    	reserve.setPassengerID(((HomeTabsMediator)parentController).getPassengerService().getModel().getId());
     	
     	cancellationTab.getSubmitButton().addActionListener(new ActionAdapter() {
 			

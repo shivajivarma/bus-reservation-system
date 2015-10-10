@@ -14,32 +14,32 @@ public class ReservationBean extends Reserve implements Bean {
 	private String origin;
 	private String destination;
 	
-	private String depttime;
-	private String arrtime;
+	private String departuretime;
+	private String arrivaltime;
 	
 	public ReservationBean(){
 	}
 	
-	public ReservationBean(long id, long pid, long bid, String dt, String tstamp, int seat, String origin, String destination, String depttime, String arrtime) {
-		this.id = id;
-		this.passenger_id = pid;
-		this.bus_id = bid;
-		this.dt = dt;
-		this.tstamp = tstamp;
-		this.seat = seat;
+	public ReservationBean(long id, long passengerID, long busID, String dt, String tstamp, int seat, String origin, String destination, String departuretime, String arrivaltime) {
+		this.setId(id);
+		this.setPassengerID(passengerID);
+		this.setBusID(busID);
+		this.setDt(dt);
+		this.setTstamp(tstamp);
+		this.setSeat(seat);
 		this.origin = origin;
 		this.destination = destination;
-		this.depttime = depttime;
-		this.arrtime = arrtime;
+		this.departuretime = departuretime;
+		this.arrivaltime = arrivaltime;
 	}
 	
 	public ReservationBean(Reserve reserve){
-		this.id = reserve.getId();
-		this.passenger_id = reserve.getPassengerId();
-		this.bus_id = reserve.getBid();
-		this.dt = reserve.getDt();
-		this.tstamp = reserve.getTstamp();
-		this.seat = reserve.getSeat();
+		this.setId(reserve.getId());
+		this.setPassengerID(reserve.getPassengerID());
+		this.setBusID(reserve.getBusID());
+		this.setDt(reserve.getDt());
+		this.setTstamp(reserve.getTstamp());
+		this.setSeat(reserve.getSeat());
 	}
 
 	public String getOrigin() {
@@ -58,20 +58,20 @@ public class ReservationBean extends Reserve implements Bean {
 		this.destination = destination;
 	}
 
-	public String getDepttime() {
-		return depttime;
+	public String getDeparturetime() {
+		return departuretime;
 	}
 
-	public void setDepttime(String depttime) {
-		this.depttime = depttime;
+	public void setDeparturetime(String departuretime) {
+		this.departuretime = departuretime;
 	}
 
-	public String getArrtime() {
-		return arrtime;
+	public String getArrivaltime() {
+		return arrivaltime;
 	}
 
-	public void setArrtime(String arrtime) {
-		this.arrtime = arrtime;
+	public void setArrivaltime(String arrivaltime) {
+		this.arrivaltime = arrivaltime;
 	}
-	
+
 }

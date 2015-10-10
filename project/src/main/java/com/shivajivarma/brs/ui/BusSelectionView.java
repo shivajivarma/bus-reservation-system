@@ -1,6 +1,5 @@
 package com.shivajivarma.brs.ui;
 
-
 import java.awt.Color;
 
 import javax.swing.ButtonGroup;
@@ -11,16 +10,13 @@ import javax.swing.JRadioButton;
 import com.shivajivarma.brs.utility.ViewComponentFactory;
 import com.shivajivarma.brs.utility.constants.Labels;
 
+/**
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
+ */
 public class BusSelectionView extends BaseView implements View {
 		
 	private static final long serialVersionUID = -8424388738392769666L;
 	private int i=0;
-	long sbusid=-1;
-	long[] busid=new long[50];
-	String date;
-	//Collection<Bus> bbs;
-	
-	//JRadioButton jrbSelectBus[]=new JRadioButton[100];
 	private JButton submitButton,backButton;
 	private ButtonGroup buses;
 		
