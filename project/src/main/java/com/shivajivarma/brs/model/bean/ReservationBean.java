@@ -11,13 +11,6 @@ public class ReservationBean extends Reserve implements Bean {
 
 	public static final String indentity = "Reservation";
 	
-	private long id;
-	private long pid;
-	private long bid;
-	private String dt;
-	private int seat;
-	private String tstamp;
-	
 	private String origin;
 	private String destination;
 	
@@ -29,8 +22,8 @@ public class ReservationBean extends Reserve implements Bean {
 	
 	public ReservationBean(long id, long pid, long bid, String dt, String tstamp, int seat, String origin, String destination, String depttime, String arrtime) {
 		this.id = id;
-		this.pid = pid;
-		this.bid = bid;
+		this.passenger_id = pid;
+		this.bus_id = bid;
 		this.dt = dt;
 		this.tstamp = tstamp;
 		this.seat = seat;
@@ -42,59 +35,11 @@ public class ReservationBean extends Reserve implements Bean {
 	
 	public ReservationBean(Reserve reserve){
 		this.id = reserve.getId();
-		this.pid = reserve.getPid();
-		this.bid = reserve.getBid();
+		this.passenger_id = reserve.getPassengerId();
+		this.bus_id = reserve.getBid();
 		this.dt = reserve.getDt();
 		this.tstamp = reserve.getTstamp();
 		this.seat = reserve.getSeat();
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public long getPid() {
-		return pid;
-	}
-
-	public void setPid(long pid) {
-		this.pid = pid;
-	}
-
-	public long getBid() {
-		return bid;
-	}
-
-	public void setBid(long bid) {
-		this.bid = bid;
-	}
-
-	public String getDt() {
-		return dt;
-	}
-
-	public void setDt(String dt) {
-		this.dt = dt;
-	}
-
-	public int getSeat() {
-		return seat;
-	}
-
-	public void setSeat(int seat) {
-		this.seat = seat;
-	}
-
-	public String getTstamp() {
-		return tstamp;
-	}
-
-	public void setTstamp(String tstamp) {
-		this.tstamp = tstamp;
 	}
 
 	public String getOrigin() {

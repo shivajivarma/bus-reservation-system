@@ -27,7 +27,7 @@ public class ReserveDAOImpl extends BaseDAO implements ReserveDAO {
 		
 		getJdbcTemplate().update(query, 
 				new Object[] { 
-				reserve.getPid(),
+				reserve.getPassengerId(),
 				reserve.getBid(),
 				reserve.getDt(),
 				reserve.getTstamp(),

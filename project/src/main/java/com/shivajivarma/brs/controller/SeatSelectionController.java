@@ -20,7 +20,7 @@ import com.shivajivarma.brs.ui.View;
 import com.shivajivarma.brs.utility.DateUtil;
 
 /**
- * @author: Shivaji Varma (contact@shivajivarma.com)
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
  */
 public class SeatSelectionController implements Controller{
 	
@@ -70,44 +70,6 @@ public class SeatSelectionController implements Controller{
 			}
 		});
     	
-
-		/*
-		btnBook.addActionListener(new ActionAdapter() {
-			public void actionPerformed(ActionEvent ae) {
-				
-			boolean flag=true;
-			Reserve rb;
-			ArrayList<Reserve> rbs = new ArrayList<Reserve>();
-			
-			for (int i = 1; i <=40 ; i++) { 
-				if(seat[i].isSelected()){
-					rb = new Reserve();
-					rb.setPid(PassengerService.dbApplicationContext.getSessionPassenger().getId());
-					rb.setBusBean(self.bb);
-					
-					rb.setDate(self.date);
-					rb.setSeat(i);
-					flag = PassengerService.dbApplicationContext.reserve(rb);
-					
-					rbs.add(rb);
-					if(!flag) 
-						break;
-				}
-			}
-			if(flag){
-				StylesAndHelperMethods.successMessage("Tickets booked successfully");
-				PassengerService.printTickets(rbs);
-				mainFrame.homePage();
-				self.setVisible(false);
-			}
-			else{
-				StylesAndHelperMethods.errorMessage("Tickets reservation failed.");
-			}
-		}
-		});
-		
-		*/
-    	
     }
     
     private void populateSeats() {
@@ -132,7 +94,7 @@ public class SeatSelectionController implements Controller{
     	}
 		try{
 			Reserve reserve = new Reserve();
-			reserve.setPid(pid);
+			reserve.setPassengerId(pid);
 			reserve.setBid(bus.getId());
 			reserve.setDt(date);
 			reserve.setTstamp(DateUtil.getTimeStamp());

@@ -1,0 +1,12 @@
+CREATE TABLE  "BUS" 
+   (	"id" NUMBER, 
+	"routeID" NUMBER NOT NULL ENABLE, 
+	"ac" NUMBER(1,0) NOT NULL ENABLE, 
+	"fare" NUMBER NOT NULL ENABLE, 
+	"departureTime" VARCHAR2(6)  NOT NULL ENABLE, 
+	"arrivalTime" VARCHAR2(6) NOT NULL ENABLE, 
+	 PRIMARY KEY ("id") ENABLE, 
+	 FOREIGN KEY ("routeID")
+	 REFERENCES  "ROUTE" ("id") ENABLE
+   )
+/

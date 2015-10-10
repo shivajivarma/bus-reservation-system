@@ -12,6 +12,7 @@ public class Bus implements Entity {
 	public static final String indentity = "Bus";
 	
 	private long id;
+	private long route_id;
 	private boolean ac;
 	private int fare;
 	private String deptime;
@@ -24,6 +25,14 @@ public class Bus implements Entity {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public long getRoute_id() {
+		return route_id;
+	}
+
+	public void setRoute_id(long route_id) {
+		this.route_id = route_id;
 	}
 
 	public boolean isAc() {

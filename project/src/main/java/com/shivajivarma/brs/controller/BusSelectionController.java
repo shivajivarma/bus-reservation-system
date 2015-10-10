@@ -13,7 +13,7 @@ import com.shivajivarma.brs.ui.BusSelectionView;
 import com.shivajivarma.brs.ui.View;
 
 /**
- * @author: Shivaji Varma (contact@shivajivarma.com)
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
  */
 public class BusSelectionController implements Controller{
 	

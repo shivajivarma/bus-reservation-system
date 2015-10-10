@@ -1,9 +1,6 @@
 package com.shivajivarma.brs.ui;
 
-
 import java.awt.Font;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
@@ -23,7 +20,6 @@ public class StylesAndHelperMethods {
 	/* Label heights */
 	public static final int HEIGHT_HEADER=28;	
 	public static final int HEIGHT_NORMAL=20;
-	//public static final int HEIGHT_TEXT_FIELD_NORMAL=28;
 	
 	public static final boolean isNumber(String str){
 		return Pattern.matches("[0-9]*",str);

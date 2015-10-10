@@ -10,6 +10,9 @@ import java.awt.event.KeyListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/**
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
+ */
 class ActionAdapter implements ActionListener {
 
 	@Override
@@ -20,6 +23,9 @@ class ActionAdapter implements ActionListener {
 
 }
 
+/**
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
+ */
 class ItemAdapter implements ItemListener {
 
 	@Override
@@ -30,6 +36,9 @@ class ItemAdapter implements ItemListener {
 
 }
 
+/**
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
+ */
 class KeyAdapter implements KeyListener {
 
 	@Override
@@ -52,6 +61,9 @@ class KeyAdapter implements KeyListener {
 
 }
 
+/**
+ * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
+ */
 class ChangeAdapter implements ChangeListener {
 
 	@Override

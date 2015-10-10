@@ -34,7 +34,7 @@ public class ReserveService implements Service{
 		ReserveDAO reserveDAO = dbApplicationContext.getBean("reserveDAO", ReserveDAO.class);
 		
 		Reserve dbRecord = reserveDAO.findById(reserve.getId());
-		if(dbRecord.getPid() == reserve.getPid()){
+		if(dbRecord.getPassengerId() == reserve.getPassengerId()){
 			reserveDAO.deleteById(reserve.getId());
 			return true;
 		}else{
@@ -79,7 +79,7 @@ public class ReserveService implements Service{
 				  "</div>"+
 				  "<div class='card-block row'>"+
 					"<div class='col-md-6'>"+
-						"<p class='card-text'><b>Passenger id :</b> "+reservationBean.getPid()+"</p>"+
+						"<p class='card-text'><b>Passenger id :</b> "+reservationBean.getPassengerId()+"</p>"+
 						"<p class='card-text'><b>Bus no. :</b> "+reservationBean.getBid()+"</p>"+
 						"<p class='card-text'><b>Seat no. :</b> "+reservationBean.getSeat()+"</p>"+
 						"<p class='card-text'><b>Depature Time. :</b> "+reservationBean.getDepttime()+"</p>"+
