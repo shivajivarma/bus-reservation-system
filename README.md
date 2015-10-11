@@ -1,5 +1,7 @@
 Bus Reservation System
 ======================
+[![Build Status](https://travis-ci.org/shivajivarma/bus-reservation-system.svg?branch=master)](https://travis-ci.org/shivajivarma/bus-reservation-system)
+
 Bus reservation system application, written in java.
 
 Project Documentation: http://shivajivarma.com/project/2014/02/09/bus-reservation-system/
