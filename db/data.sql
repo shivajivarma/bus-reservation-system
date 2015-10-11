@@ -1,47 +1,56 @@
-Insert into ROUTE (ID,ORIGIN,DESTINATION) values (10,'Visakhapatnam','Hyderabad')
-/
-Insert into ROUTE (ID,ORIGIN,DESTINATION) values (11,'Hyderabad','Visakhapatnam')
-/
-Insert into ROUTE (ID,ORIGIN,DESTINATION) values (12,'Visakhapatnam','Bangalore')
-/
-Insert into ROUTE (ID,ORIGIN,DESTINATION) values (13,'Bangalore','Visakhapatnam')
-/
-Insert into ROUTE (ID,ORIGIN,DESTINATION) values (14,'Visakhapatnam','Tirupati')
-/
-Insert into ROUTE (ID,ORIGIN,DESTINATION) values (15,'Tirupati','Visakhapatnam')
-/
-Insert into ROUTE (ID,ORIGIN,DESTINATION) values (16,'Hyderabad','Bangalore')
-/
-Insert into ROUTE (ID,ORIGIN,DESTINATION) values (17,'Bangalore','Hyderabad')
-/
-Insert into ROUTE (ID,ORIGIN,DESTINATION) values (18,'Hyderabad','Tirupati')
-/
-Insert into ROUTE (ID,ORIGIN,DESTINATION) values (19,'Tirupati','Hyderabad')
-/
-Insert into ROUTE (ID,ORIGIN,DESTINATION) values (20,'Bangalore','Tirupati')
-/
-Insert into ROUTE (ID,ORIGIN,DESTINATION) values (21,'Tirupati','Bangalore')
-/
+SET SQL_SAFE_UPDATES=0;
 
-Insert into BUS (ID,ROUTEID,AC,FARE,DEPARTURETIME,ARRIVALTIME) values (1001,10,1,1600,'20:00','09:00')
-/
-Insert into BUS (ID,ROUTEID,AC,FARE,DEPARTURETIME,ARRIVALTIME) values (1002,10,0,1700,'20:00','06:30')
-/
-Insert into BUS (ID,ROUTEID,AC,FARE,DEPARTURETIME,ARRIVALTIME) values (1003,10,1,2000,'21:00','07:00')
-/
-Insert into BUS (ID,ROUTEID,AC,FARE,DEPARTURETIME,ARRIVALTIME) values (1004,11,0,1500,'18:00','05:00')
-/
-Insert into BUS (ID,ROUTEID,AC,FARE,DEPARTURETIME,ARRIVALTIME) values (1005,12,0,1200,'20:00','09:00')
-/
-Insert into BUS (ID,ROUTEID,AC,FARE,DEPARTURETIME,ARRIVALTIME) values (1006,12,1,2100,'20:00','18:00')
-/
-Insert into BUS (ID,ROUTEID,AC,FARE,DEPARTURETIME,ARRIVALTIME) values (1007,13,0,1700,'21:30','19:00')
-/
-Insert into BUS (ID,ROUTEID,AC,FARE,DEPARTURETIME,ARRIVALTIME) values (1009,13,0,800,'14:00','09:30')
-/
-Insert into BUS (ID,ROUTEID,AC,FARE,DEPARTURETIME,ARRIVALTIME) values (1010,13,1,700,'20:00','19:00')
-/
-Insert into BUS (ID,ROUTEID,AC,FARE,DEPARTURETIME,ARRIVALTIME) values (1011,14,0,300,'20:00','09:00')
-/
-Insert into BUS (ID,ROUTEID,AC,FARE,DEPARTURETIME,ARRIVALTIME) values (1008,13,1,1800,'19:10','17:00')
-/
+delete from `brs`.`reserve`;
+
+delete from `brs`.`bus`;
+ALTER TABLE `brs`.`bus` AUTO_INCREMENT = 200;
+
+delete from `brs`.`route`;
+ALTER TABLE `brs`.`route` AUTO_INCREMENT = 10;
+
+INSERT INTO `brs`.`route` (origin,destination) VALUES ('Visakhapatnam','Hyderabad');
+
+INSERT INTO `brs`.`route` (origin,destination) VALUES ('Hyderabad','Visakhapatnam');
+
+INSERT INTO `brs`.`route` (origin,destination) VALUES ('Visakhapatnam','Bangalore');
+
+INSERT INTO `brs`.`route` (origin,destination) VALUES ('Bangalore','Visakhapatnam');
+
+INSERT INTO `brs`.`route` (origin,destination) VALUES ('Visakhapatnam','Tirupati');
+
+INSERT INTO `brs`.`route` (origin,destination) VALUES ('Tirupati','Visakhapatnam');
+
+INSERT INTO `brs`.`route` (origin,destination) VALUES ('Hyderabad','Bangalore');
+
+INSERT INTO `brs`.`route` (origin,destination) VALUES ('Bangalore','Hyderabad');
+
+INSERT INTO `brs`.`route` (origin,destination) VALUES ('Hyderabad','Tirupati');
+
+INSERT INTO `brs`.`route` (origin,destination) VALUES ('Tirupati','Hyderabad');
+
+INSERT INTO `brs`.`route` (origin,destination) VALUES ('Bangalore','Tirupati');
+
+INSERT INTO `brs`.`route` (origin,destination) VALUES ('Tirupati','Bangalore');
+
+
+INSERT INTO `brs`.`bus` (routeid,ac,fare,departuretime,arrivaltime) VALUES (10,1,1600,'20:00','09:00');
+
+INSERT INTO `brs`.`bus` (routeid,ac,fare,departuretime,arrivaltime) VALUES (10,0,1700,'20:00','06:30');
+
+INSERT INTO `brs`.`bus` (routeid,ac,fare,departuretime,arrivaltime) VALUES (10,1,2000,'21:00','07:00');
+
+INSERT INTO `brs`.`bus` (routeid,ac,fare,departuretime,arrivaltime) VALUES (11,0,1500,'18:00','05:00');
+
+INSERT INTO `brs`.`bus` (routeid,ac,fare,departuretime,arrivaltime) VALUES (12,0,1200,'20:00','09:00');
+
+INSERT INTO `brs`.`bus` (routeid,ac,fare,departuretime,arrivaltime) VALUES (12,1,2100,'20:00','18:00');
+
+INSERT INTO `brs`.`bus` (routeid,ac,fare,departuretime,arrivaltime) VALUES (13,0,1700,'21:30','19:00');
+
+INSERT INTO `brs`.`bus` (routeid,ac,fare,departuretime,arrivaltime) VALUES (13,0,800,'14:00','09:30');
+
+INSERT INTO `brs`.`bus` (routeid,ac,fare,departuretime,arrivaltime) VALUES (13,1,700,'20:00','19:00');
+
+INSERT INTO `brs`.`bus` (routeid,ac,fare,departuretime,arrivaltime) VALUES (14,0,300,'20:00','09:00');
+
+INSERT INTO `brs`.`bus` (routeid,ac,fare,departuretime,arrivaltime) VALUES (13,1,1800,'19:10','17:00');

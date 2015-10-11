@@ -1,3 +1,0 @@
-CREATE OR REPLACE FORCE VIEW "RESERVATION" ("ID", "PASSENGERID", "BUSID", "SEAT", "DT", "TSTAMP", "ORIGIN", "DESTINATION", "DEPARTURETIME", "ARRIVALTIME")
-AS SELECT reserve.id, reserve.passengerid, reserve.busid, reserve.seat, reserve.dt, reserve.tstamp, route.origin, route.destination, bus.departuretime, bus.arrivaltime 
-FROM reserve, bus, route WHERE reserve.busid=bus.id and route.id=bus.routeid ORDER BY reserve.id DESC / 

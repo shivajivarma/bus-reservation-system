@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans spring-schemas/spring-beans.xsd">
+    
+    <bean id="passengerDAO" class="com.shivajivarma.brs.model.dao.PassengerDAOImpl">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <bean id="reserveDAO" class="com.shivajivarma.brs.model.dao.ReserveDAOImpl">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <bean id="reservationDAO" class="com.shivajivarma.brs.model.dao.ReservationDAOImpl">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <bean id="busDAO" class="com.shivajivarma.brs.model.dao.BusDAOImpl">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <bean id="routeDAO" class="com.shivajivarma.brs.model.dao.RouteDAOImpl">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+     
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/brs" />
+        <property name="username" value="admin" />
+        <property name="password" value="admin" />
+    </bean>
+ 
+</beans>

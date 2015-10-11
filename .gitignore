@@ -5,6 +5,6 @@ Icon?
 Thumbs.db
 bin/
 doc/
-apidocs/
-*.class
-.metadata/
+target/
+.metadata
+.settings
