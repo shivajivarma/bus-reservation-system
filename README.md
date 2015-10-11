@@ -20,8 +20,15 @@ Project Documentation: http://shivajivarma.com/project/2014/02/09/bus-reservatio
 	* ```PATH=C:\Program Files\Java\jdk1.8.0_20\bin```
 	* ```JAVA_HOME=C:\Program Files\Java\jdk1.8.0_20```
 
-3. Make sure eclispe is using currect JDK.
+3. Clone the source code:
+ 	```bash
+ 	git clone https://github.com/shivajivarma/bus-reservation-system.git
+ 	```
+ 	
+4. Import project into eclipse.
 
-3. Database setup (https://github.com/shivajivarma/bus-reservation-system/tree/master/db)
+5. Make sure eclispe is using currect JDK.
 
-4. Set Maven goals Eg: compile, package
+6. Database setup (https://github.com/shivajivarma/bus-reservation-system/tree/master/db)
+
+7. Set Maven goals Eg: compile, package
