@@ -3,8 +3,6 @@
 ehthumbs.db
 Icon?
 Thumbs.db
-bin/
 doc/
 target/
 .metadata
-.settings
