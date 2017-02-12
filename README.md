@@ -4,7 +4,7 @@ Bus Reservation System
 
 Bus reservation system application, written in java.
 
-Project Documentation: http://shivajivarma.com/project/2014/02/09/bus-reservation-system/
+Project Documentation: http://shivajivarma.com/project/bus-reservation-system/
 
 
 ###Setup:
