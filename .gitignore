@@ -6,3 +6,6 @@ Thumbs.db
 doc/
 target/
 .metadata
+.settings/
+.project
+.classpath
