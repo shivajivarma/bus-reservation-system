@@ -5,7 +5,7 @@ Bus Reservation System
 Bus reservation system application, written in java.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/shivajivarma/bus-reservation-system/master/src/main/resources/images/banner.jpg" width="210">
+  <img src="https://raw.githubusercontent.com/shivajivarma/bus-reservation-system/master/src/main/resources/images/banner.jpg">
 </div>
 
 Project Documentation: https://shivajivarma.com/project/bus-reservation-system/
