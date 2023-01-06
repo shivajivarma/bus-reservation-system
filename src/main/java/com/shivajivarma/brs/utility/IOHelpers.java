@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author <a href="http://shivajivarma.com" target="_blank">Shivaji Varma</a>
@@ -31,9 +32,9 @@ public class IOHelpers {
 	public static String getFileAsString(String filePath) {
 		String content = new String("");
 		try {
-			InputStream in = IOHelpers.class.getClass().getResourceAsStream(
+			InputStream in = IOHelpers.class.getClassLoader().getResourceAsStream(
 					filePath);
-			BufferedReader input = new BufferedReader(new InputStreamReader(in));
+			BufferedReader input = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
 
 			String line;
 			while ((line = input.readLine()) != null) {

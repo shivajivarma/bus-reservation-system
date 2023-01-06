@@ -60,13 +60,13 @@ public class ReserveService implements Service{
 	}
 	
 	public void printTickets(List<ReservationBean> tickets) {
-		String html = IOHelpers.getFileAsString("/html/ticket-head.html");
+		String html = IOHelpers.getFileAsString("./html/ticket-head.html");
 		
 		for (ReservationBean reservationBean : tickets) {
 			html = html + createTicketCard(reservationBean);
 		}
 		
-		html = html + IOHelpers.getFileAsString("/html/ticket-end.html");
+		html = html + IOHelpers.getFileAsString("./html/ticket-end.html");
 		
 		IOHelpers.printHTML(html, "tickets");
 	}
