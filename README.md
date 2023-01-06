@@ -1,6 +1,6 @@
 Bus Reservation System
 ======================
-[![Build Status](https://github.com/shivajivarma/bus-reservation-system/workflows/Build/badge.svg)](https://github.com/shivajivarma/bus-reservation-system/actions?workflow=Java%20CI%20with%20Maven)
+[![Build Status](https://github.com/shivajivarma/bus-reservation-system/workflows/Build/badge.svg)](https://github.com/shivajivarma/bus-reservation-system/actions?workflow=Build)
 
 Bus reservation system application, written in java.
 
