@@ -1,8 +1,12 @@
 Bus Reservation System
 ======================
-[![Build Status](https://travis-ci.org/shivajivarma/bus-reservation-system.svg?branch=master)](https://travis-ci.org/shivajivarma/bus-reservation-system)
+[![Build Status](https://github.com/shivajivarma/bus-reservation-system/workflows/Build/badge.svg)](https://github.com/shivajivarma/bus-reservation-system/actions?workflow=Java%20CI%20with%20Maven)
 
 Bus reservation system application, written in java.
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/shivajivarma/bus-reservation-system/master/src/main/resources/images/banner.jpg" width="210">
+</div>
 
 Project Documentation: https://shivajivarma.com/project/bus-reservation-system/
 
